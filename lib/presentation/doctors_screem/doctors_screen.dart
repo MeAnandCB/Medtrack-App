@@ -1,3 +1,5 @@
+import 'package:college/database/database_image.dart';
+import 'package:college/presentation/doctors_list/doctors_list.dart';
 import 'package:college/utils/color_constants/color_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -6,15 +8,6 @@ class DoctorsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> databaseImagesDepartment = [
-      "assets/images/doctors_department/brain.png",
-      "assets/images/doctors_department/cancer.png",
-      "assets/images/doctors_department/emergency.png",
-      "assets/images/doctors_department/heart.png",
-      "assets/images/doctors_department/pediatrics.png",
-      "assets/images/doctors_department/skin.png",
-      "assets/images/doctors_department/surgery.png",
-    ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorCOnstant.myRoseColor,
@@ -22,44 +15,66 @@ class DoctorsPage extends StatelessWidget {
         title: Text("Departments"),
       ),
       body: GridView.builder(
-        itemCount: databaseImagesDepartment.length,
+        itemCount: DatabaseImages.databaseImagesDepartment.length,
         padding: EdgeInsets.all(20),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
-            mainAxisExtent: 200),
-        itemBuilder: (context, index) => Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: ColorCOnstant.myContainerGrey,
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(15),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          padding: EdgeInsets.all(10),
-                          child: Image.asset(databaseImagesDepartment[index])),
-                    ],
-                  ),
+            crossAxisCount: 3, crossAxisSpacing: 20, mainAxisExtent: 180),
+        itemBuilder: (context, index) => InkWell(
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DoctorsListScreen(
+                  id: DatabaseImages.databaseImagesDepartment[index]['id'],
+                  categoryId: index,
                 ),
+              )),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              child: Column(
+                children: [
+                  Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: ColorCOnstant.myContainerGrey,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(15),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              DatabaseImages.databaseImagesDepartment[index]
+                                  ['image'],
+                              fit: BoxFit.fitWidth,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  SizedBox(
+                    width: 200,
+                    child: Text(
+                      DatabaseImages.databaseImagesDepartment[index]
+                          ['department'],
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                    ),
+                  )
+                ],
               ),
             ),
-            SizedBox(
-              height: 15,
-            ),
-            Text("Genaral Medicine")
-          ],
+          ),
         ),
       ),
     );
   }
 }
-
-class DatabaseImages {}

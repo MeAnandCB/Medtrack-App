@@ -4,7 +4,8 @@ import '../utils/color_constants/color_constant.dart';
 
 class TextFieldRefactor extends StatelessWidget {
   final String name;
-  const TextFieldRefactor({super.key, required this.name});
+  TextEditingController namecontroller = TextEditingController();
+  TextFieldRefactor({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
