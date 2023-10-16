@@ -45,119 +45,120 @@ class ModelDB {
   static List<Department> departmentsData = [
     Department(
       id: 0,
-      image: "assets/images/doctors_department/x-ray.png",
+      image: "assets/images/doctors/genaral_medicine/1.png",
       department: "General Medicine",
       doctors: [
         Doctor(
-          id: 3,
-          image: "assets/images/doctors_department/general_medicine.png",
-          name: "Dr. Lisa Patel",
+          id: 1,
+          image: "assets/images/doctors/genaral_medicine/1.png",
+          name: "DR. Nabil Ahamed Salim P",
+          qualification: "MBBS, MD",
+          designation: "General Practitioner",
+          yearsOfExperience: 18,
+          visitedPatientCount: 500,
+          ratingOutOf5: 4.9,
+          consultationFee: 75.0,
+        ),
+        Doctor(
+          id: 2,
+          image: "assets/images/doctors/genaral_medicine/2.jpeg",
+          name: "DR. K M Mathew",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
           yearsOfExperience: 18,
           visitedPatientCount: 600,
-          ratingOutOf5: 4.7,
-          consultationFee: 55,
-        ),
-        Doctor(
-          id: 4,
-          image: "assets/images/doctors_department/general_medicine.png",
-          name: "Dr. James Johnson",
-          qualification: "MBBS, MD",
-          designation: "General Practitioner",
-          yearsOfExperience: 22,
-          visitedPatientCount: 750,
-          ratingOutOf5: 4.6,
-          consultationFee: 58,
-        ),
-        Doctor(
-          id: 5,
-          image: "assets/images/doctors_department/general_medicine.png",
-          name: "Dr. Maria Garcia",
-          qualification: "MBBS, MD",
-          designation: "General Practitioner",
-          yearsOfExperience: 17,
-          visitedPatientCount: 550,
           ratingOutOf5: 4.8,
-          consultationFee: 52,
+          consultationFee: 80.0,
         ),
         Doctor(
-          id: 6,
-          image: "assets/images/doctors_department/general_medicine.png",
-          name: "Dr. David Chen",
-          qualification: "MBBS, MD",
-          designation: "General Practitioner",
-          yearsOfExperience: 19,
-          visitedPatientCount: 680,
-          ratingOutOf5: 4.9,
-          consultationFee: 57,
-        ),
-        Doctor(
-          id: 7,
-          image: "assets/images/doctors_department/general_medicine.png",
-          name: "Dr. Sarah Wilson",
-          qualification: "MBBS, MD",
-          designation: "General Practitioner",
-          yearsOfExperience: 21,
-          visitedPatientCount: 720,
-          ratingOutOf5: 4.7,
-          consultationFee: 56,
-        ),
-        Doctor(
-          id: 8,
-          image: "assets/images/doctors_department/general_medicine.png",
-          name: "Dr. Michael Brown",
-          qualification: "MBBS, MD",
-          designation: "General Practitioner",
-          yearsOfExperience: 16,
-          visitedPatientCount: 530,
-          ratingOutOf5: 4.8,
-          consultationFee: 53,
-        ),
-        Doctor(
-          id: 9,
-          image: "assets/images/doctors_department/general_medicine.png",
-          name: "Dr. Jennifer Lee",
-          qualification: "MBBS, MD",
-          designation: "General Practitioner",
-          yearsOfExperience: 23,
-          visitedPatientCount: 800,
-          ratingOutOf5: 4.9,
-          consultationFee: 59,
-        ),
-        Doctor(
-          id: 10,
-          image: "assets/images/doctors_department/general_medicine.png",
-          name: "Dr. Richard Taylor",
-          qualification: "MBBS, MD",
-          designation: "General Practitioner",
-          yearsOfExperience: 20,
-          visitedPatientCount: 700,
-          ratingOutOf5: 4.6,
-          consultationFee: 54,
-        ),
-        Doctor(
-          id: 11,
-          image: "assets/images/doctors_department/general_medicine.png",
-          name: "Dr. Samantha Hall",
+          id: 3,
+          image: "assets/images/doctors/genaral_medicine/10.png",
+          name: "DR. Rachana Babu A",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
           yearsOfExperience: 18,
-          visitedPatientCount: 610,
+          visitedPatientCount: 550,
           ratingOutOf5: 4.7,
-          consultationFee: 55,
+          consultationFee: 70.0,
         ),
         Doctor(
-          id: 12,
-          image: "assets/images/doctors_department/general_medicine.png",
-          name: "Dr. Robert Adams",
+          id: 4,
+          image: "assets/images/doctors/genaral_medicine/3.jpeg",
+          name: "DR. Anup R Warrier(M)",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
-          yearsOfExperience: 24,
-          visitedPatientCount: 850,
-          ratingOutOf5: 4.9,
-          consultationFee: 61,
+          yearsOfExperience: 18,
+          visitedPatientCount: 450,
+          ratingOutOf5: 4.6,
+          consultationFee: 60.0,
         ),
+        Doctor(
+          id: 5,
+          image: "assets/images/doctors/genaral_medicine/4.jpeg",
+          name: "DR. Arun Wilson(M)",
+          qualification: "MBBS, MD",
+          designation: "General Practitioner",
+          yearsOfExperience: 18,
+          visitedPatientCount: 700,
+          ratingOutOf5: 4.9,
+          consultationFee: 85.0,
+        ),
+        Doctor(
+          id: 6,
+          image: "assets/images/doctors/genaral_medicine/5.jpeg",
+          name: "DR. Sherry Peter(M)",
+          qualification: "MBBS, MD",
+          designation: "General Practitioner",
+          yearsOfExperience: 18,
+          visitedPatientCount: 800,
+          ratingOutOf5: 4.9,
+          consultationFee: 90.0,
+        ),
+        Doctor(
+          id: 7,
+          image: "assets/images/doctors/genaral_medicine/6.jpeg",
+          name: "DR. Latha P Rao(F)",
+          qualification: "MBBS, MD",
+          designation: "General Practitioner",
+          yearsOfExperience: 18,
+          visitedPatientCount: 400,
+          ratingOutOf5: 4.7,
+          consultationFee: 75.0,
+        ),
+        Doctor(
+          id: 8,
+          image: "assets/images/doctors/genaral_medicine/7.jpeg",
+          name: "DR. Suma Menon N(F)",
+          qualification: "MBBS, MD",
+          designation: "General Practitioner",
+          yearsOfExperience: 18,
+          visitedPatientCount: 550,
+          ratingOutOf5: 4.8,
+          consultationFee: 80.0,
+        ),
+        Doctor(
+          id: 9,
+          image: "assets/images/doctors/genaral_medicine/8.jpeg",
+          name: "DR. Jijo Paul(M)",
+          qualification: "MBBS, MD",
+          designation: "General Practitioner",
+          yearsOfExperience: 18,
+          visitedPatientCount: 650,
+          ratingOutOf5: 4.9,
+          consultationFee: 85.0,
+        ),
+        Doctor(
+          id: 10,
+          image: "assets/images/doctors/genaral_medicine/9.jpeg",
+          name: "DR. Zachariah T Zachariah(M)",
+          qualification: "MBBS, MD",
+          designation: "General Practitioner",
+          yearsOfExperience: 18,
+          visitedPatientCount: 750,
+          ratingOutOf5: 4.9,
+          consultationFee: 90.0,
+        ),
+
         // Add more doctors for this department
       ],
     ),
@@ -165,12 +166,13 @@ class ModelDB {
     // General Oncology Department
     Department(
       id: 2,
-      image: "assets/images/doctors_department/cardiology.png",
+      image: "assets/images/doctors/genaral_medicine_department/cardiology.png",
       department: "Oncology Department",
       doctors: [
         Doctor(
           id: 13,
-          image: "assets/images/doctors_department/oncology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/oncology.png",
           name: "Dr. Susan Miller",
           qualification: "MBBS, MD, FACP",
           designation: "Oncologist",
@@ -181,7 +183,8 @@ class ModelDB {
         ),
         Doctor(
           id: 14,
-          image: "assets/images/doctors_department/oncology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/oncology.png",
           name: "Dr. Mark Anderson",
           qualification: "MBBS, MD, FACP",
           designation: "Oncologist",
@@ -192,7 +195,8 @@ class ModelDB {
         ),
         Doctor(
           id: 15,
-          image: "assets/images/doctors_department/oncology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/oncology.png",
           name: "Dr. Emily Davis",
           qualification: "MBBS, MD, FACP",
           designation: "Oncologist",
@@ -203,7 +207,8 @@ class ModelDB {
         ),
         Doctor(
           id: 16,
-          image: "assets/images/doctors_department/oncology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/oncology.png",
           name: "Dr. Robert Clark",
           qualification: "MBBS, MD, FACP",
           designation: "Oncologist",
@@ -214,7 +219,8 @@ class ModelDB {
         ),
         Doctor(
           id: 17,
-          image: "assets/images/doctors_department/oncology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/oncology.png",
           name: "Dr. Sarah Turner",
           qualification: "MBBS, MD, FACP",
           designation: "Oncologist",
@@ -230,12 +236,14 @@ class ModelDB {
     // Surgery Department
     Department(
       id: 3,
-      image: "assets/images/doctors_department/dermatology.png",
+      image:
+          "assets/images/doctors/genaral_medicine_department/dermatology.png",
       department: "Surgery Department",
       doctors: [
         Doctor(
           id: 18,
-          image: "assets/images/doctors_department/surgery.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/surgery.png",
           name: "Dr. John Smith",
           qualification: "MBBS, MS, FACS",
           designation: "General Surgeon",
@@ -246,7 +254,8 @@ class ModelDB {
         ),
         Doctor(
           id: 19,
-          image: "assets/images/doctors_department/surgery.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/surgery.png",
           name: "Dr. Linda Davis",
           qualification: "MBBS, MS, FACS",
           designation: "General Surgeon",
@@ -257,7 +266,8 @@ class ModelDB {
         ),
         Doctor(
           id: 20,
-          image: "assets/images/doctors_department/surgery.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/surgery.png",
           name: "Dr. Michael Johnson",
           qualification: "MBBS, MS, FACS",
           designation: "General Surgeon",
@@ -273,12 +283,13 @@ class ModelDB {
     // Emergency Department
     Department(
       id: 4,
-      image: "assets/images/doctors_department/ent.png",
+      image: "assets/images/doctors/genaral_medicine_department/ent.png",
       department: "Emergency Department",
       doctors: [
         Doctor(
           id: 22,
-          image: "assets/images/doctors_department/emergency.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/emergency.png",
           name: "Dr. Mark Wilson",
           qualification: "MBBS, MD, EMA",
           designation: "Emergency Physician",
@@ -289,7 +300,8 @@ class ModelDB {
         ),
         Doctor(
           id: 23,
-          image: "assets/images/doctors_department/emergency.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/emergency.png",
           name: "Dr. Sarah Adams",
           qualification: "MBBS, MD, EMA",
           designation: "Emergency Physician",
@@ -300,7 +312,8 @@ class ModelDB {
         ),
         Doctor(
           id: 24,
-          image: "assets/images/doctors_department/emergency.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/emergency.png",
           name: "Dr. James Brown",
           qualification: "MBBS, MD, EMA",
           designation: "Emergency Physician",
@@ -311,7 +324,8 @@ class ModelDB {
         ),
         Doctor(
           id: 25,
-          image: "assets/images/doctors_department/emergency.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/emergency.png",
           name: "Dr. Emily Smith",
           qualification: "MBBS, MD, EMA",
           designation: "Emergency Physician",
@@ -322,7 +336,8 @@ class ModelDB {
         ),
         Doctor(
           id: 26,
-          image: "assets/images/doctors_department/emergency.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/emergency.png",
           name: "Dr. John Turner",
           qualification: "MBBS, MD, EMA",
           designation: "Emergency Physician",
@@ -333,7 +348,8 @@ class ModelDB {
         ),
         Doctor(
           id: 27,
-          image: "assets/images/doctors_department/emergency.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/emergency.png",
           name: "Dr. Linda Davis",
           qualification: "MBBS, MD, EMA",
           designation: "Emergency Physician",
@@ -349,12 +365,14 @@ class ModelDB {
     //Neurology Department
     Department(
       id: 5,
-      image: "assets/images/doctors_department/gastroenterology.png",
+      image:
+          "assets/images/doctors/genaral_medicine_department/gastroenterology.png",
       department: "Neurology Department",
       doctors: [
         Doctor(
           id: 28,
-          image: "assets/images/doctors_department/neurology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/neurology.png",
           name: "Dr. Alex Turner",
           qualification: "MBBS, MD, DM",
           designation: "Neurologist",
@@ -365,7 +383,8 @@ class ModelDB {
         ),
         Doctor(
           id: 29,
-          image: "assets/images/doctors_department/neurology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/neurology.png",
           name: "Dr. Sarah Johnson",
           qualification: "MBBS, MD, DM",
           designation: "Neurologist",
@@ -380,12 +399,13 @@ class ModelDB {
     //Cardiology Department
     Department(
       id: 6,
-      image: "assets/images/doctors_department/obstetrics.png",
+      image: "assets/images/doctors/genaral_medicine_department/obstetrics.png",
       department: "Cardiology Department",
       doctors: [
         Doctor(
           id: 30,
-          image: "assets/images/doctors_department/cardiology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/cardiology.png",
           name: "Dr. John Anderson",
           qualification: "MBBS, MD, FACC",
           designation: "Cardiologist",
@@ -396,7 +416,8 @@ class ModelDB {
         ),
         Doctor(
           id: 31,
-          image: "assets/images/doctors_department/cardiology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/cardiology.png",
           name: "Dr. Emily Smith",
           qualification: "MBBS, MD, FACC",
           designation: "Cardiologist",
@@ -407,7 +428,8 @@ class ModelDB {
         ),
         Doctor(
           id: 32,
-          image: "assets/images/doctors_department/cardiology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/cardiology.png",
           name: "Dr. Michael Turner",
           qualification: "MBBS, MD, FACC",
           designation: "Cardiologist",
@@ -418,7 +440,8 @@ class ModelDB {
         ),
         Doctor(
           id: 33,
-          image: "assets/images/doctors_department/cardiology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/cardiology.png",
           name: "Dr. Sarah Davis",
           qualification: "MBBS, MD, FACC",
           designation: "Cardiologist",
@@ -429,7 +452,8 @@ class ModelDB {
         ),
         Doctor(
           id: 34,
-          image: "assets/images/doctors_department/cardiology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/cardiology.png",
           name: "Dr. Robert Johnson",
           qualification: "MBBS, MD, FACC",
           designation: "Cardiologist",
@@ -440,7 +464,8 @@ class ModelDB {
         ),
         Doctor(
           id: 35,
-          image: "assets/images/doctors_department/cardiology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/cardiology.png",
           name: "Dr. Linda Turner",
           qualification: "MBBS, MD, FACC",
           designation: "Cardiologist",
@@ -455,12 +480,14 @@ class ModelDB {
     //Pediatrics Department
     Department(
       id: 7,
-      image: "assets/images/doctors_department/orthopedics.png",
+      image:
+          "assets/images/doctors/genaral_medicine_department/orthopedics.png",
       department: "Pediatrics Department",
       doctors: [
         Doctor(
           id: 36,
-          image: "assets/images/doctors_department/pediatrics.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/pediatrics.png",
           name: "Dr. Sarah Johnson",
           qualification: "MBBS, MD",
           designation: "Pediatrician",
@@ -471,7 +498,8 @@ class ModelDB {
         ),
         Doctor(
           id: 37,
-          image: "assets/images/doctors_department/pediatrics.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/pediatrics.png",
           name: "Dr. Emily Turner",
           qualification: "MBBS, MD",
           designation: "Pediatrician",
@@ -482,7 +510,8 @@ class ModelDB {
         ),
         Doctor(
           id: 38,
-          image: "assets/images/doctors_department/pediatrics.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/pediatrics.png",
           name: "Dr. Michael Davis",
           qualification: "MBBS, MD",
           designation: "Pediatrician",
@@ -493,7 +522,8 @@ class ModelDB {
         ),
         Doctor(
           id: 39,
-          image: "assets/images/doctors_department/pediatrics.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/pediatrics.png",
           name: "Dr. Linda Smith",
           qualification: "MBBS, MD",
           designation: "Pediatrician",
@@ -506,12 +536,13 @@ class ModelDB {
     ),
     Department(
       id: 8,
-      image: "assets/images/doctors_department/pediatrics.png",
+      image: "assets/images/doctors/genaral_medicine_department/pediatrics.png",
       department: "Dermatology Department",
       doctors: [
         Doctor(
           id: 40,
-          image: "assets/images/doctors_department/dermatology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/dermatology.png",
           name: "Dr. Emily Turner",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -522,7 +553,8 @@ class ModelDB {
         ),
         Doctor(
           id: 41,
-          image: "assets/images/doctors_department/dermatology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/dermatology.png",
           name: "Dr. Sarah Johnson",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -533,7 +565,8 @@ class ModelDB {
         ),
         Doctor(
           id: 42,
-          image: "assets/images/doctors_department/dermatology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/dermatology.png",
           name: "Dr. Michael Davis",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -544,7 +577,8 @@ class ModelDB {
         ),
         Doctor(
           id: 43,
-          image: "assets/images/doctors_department/dermatology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/dermatology.png",
           name: "Dr. Linda Smith",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -555,7 +589,8 @@ class ModelDB {
         ),
         Doctor(
           id: 44,
-          image: "assets/images/doctors_department/dermatology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/dermatology.png",
           name: "Dr. John Anderson",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -566,7 +601,8 @@ class ModelDB {
         ),
         Doctor(
           id: 45,
-          image: "assets/images/doctors_department/dermatology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/dermatology.png",
           name: "Dr. Susan Turner",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -577,7 +613,8 @@ class ModelDB {
         ),
         Doctor(
           id: 46,
-          image: "assets/images/doctors_department/dermatology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/dermatology.png",
           name: "Dr. James Davis",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -591,12 +628,13 @@ class ModelDB {
     //Gynecology Department
     Department(
       id: 9,
-      image: "assets/images/doctors_department/psychiatry.png",
+      image: "assets/images/doctors/genaral_medicine_department/psychiatry.png",
       department: "Gynecology Department",
       doctors: [
         Doctor(
           id: 47,
-          image: "assets/images/doctors_department/gynecology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/gynecology.png",
           name: "Dr. Emily Turner",
           qualification: "MBBS, MD, FACOG",
           designation: "Gynecologist",
@@ -607,7 +645,8 @@ class ModelDB {
         ),
         Doctor(
           id: 48,
-          image: "assets/images/doctors_department/gynecology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/gynecology.png",
           name: "Dr. Sarah Johnson",
           qualification: "MBBS, MD, FACOG",
           designation: "Gynecologist",
@@ -618,7 +657,8 @@ class ModelDB {
         ),
         Doctor(
           id: 49,
-          image: "assets/images/doctors_department/gynecology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/gynecology.png",
           name: "Dr. Linda Davis",
           qualification: "MBBS, MD, FACOG",
           designation: "Gynecologist",
@@ -629,7 +669,8 @@ class ModelDB {
         ),
         Doctor(
           id: 50,
-          image: "assets/images/doctors_department/gynecology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/gynecology.png",
           name: "Dr. Michael Smith",
           qualification: "MBBS, MD, FACOG",
           designation: "Gynecologist",
@@ -640,7 +681,8 @@ class ModelDB {
         ),
         Doctor(
           id: 51,
-          image: "assets/images/doctors_department/gynecology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/gynecology.png",
           name: "Dr. Susan Turner",
           qualification: "MBBS, MD, FACOG",
           designation: "Gynecologist",
@@ -651,7 +693,8 @@ class ModelDB {
         ),
         Doctor(
           id: 52,
-          image: "assets/images/doctors_department/gynecology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/gynecology.png",
           name: "Dr. James Davis",
           qualification: "MBBS, MD, FACOG",
           designation: "Gynecologist",
@@ -662,7 +705,8 @@ class ModelDB {
         ),
         Doctor(
           id: 53,
-          image: "assets/images/doctors_department/gynecology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/gynecology.png",
           name: "Dr. John Anderson",
           qualification: "MBBS, MD, FACOG",
           designation: "Gynecologist",
@@ -673,7 +717,8 @@ class ModelDB {
         ),
         Doctor(
           id: 54,
-          image: "assets/images/doctors_department/gynecology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/gynecology.png",
           name: "Dr. Robert Turner",
           qualification: "MBBS, MD, FACOG",
           designation: "Gynecologist",
@@ -687,12 +732,13 @@ class ModelDB {
     //Orthopedics Department
     Department(
       id: 10,
-      image: "assets/images/doctors_department/surgery.png",
+      image: "assets/images/doctors/genaral_medicine_department/surgery.png",
       department: "Orthopedics Department",
       doctors: [
         Doctor(
           id: 55,
-          image: "assets/images/doctors_department/orthopedics.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/orthopedics.png",
           name: "Dr. Mark Turner",
           qualification: "MBBS, MS, DNB",
           designation: "Orthopedic Surgeon",
@@ -703,7 +749,8 @@ class ModelDB {
         ),
         Doctor(
           id: 56,
-          image: "assets/images/doctors_department/orthopedics.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/orthopedics.png",
           name: "Dr. Sarah Johnson",
           qualification: "MBBS, MS, DNB",
           designation: "Orthopedic Surgeon",
@@ -714,7 +761,8 @@ class ModelDB {
         ),
         Doctor(
           id: 57,
-          image: "assets/images/doctors_department/orthopedics.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/orthopedics.png",
           name: "Dr. Emily Davis",
           qualification: "MBBS, MS, DNB",
           designation: "Orthopedic Surgeon",
@@ -729,12 +777,13 @@ class ModelDB {
     // Radiology Department
     Department(
       id: 11,
-      image: "assets/images/doctors_department/surgery.png",
+      image: "assets/images/doctors/genaral_medicine_department/surgery.png",
       department: "Radiology Department",
       doctors: [
         Doctor(
           id: 58,
-          image: "assets/images/doctors_department/radiology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/radiology.png",
           name: "Dr. Jennifer Turner",
           qualification: "MBBS, MD, Radiologist",
           designation: "Radiologist",
@@ -745,7 +794,8 @@ class ModelDB {
         ),
         Doctor(
           id: 59,
-          image: "assets/images/doctors_department/radiology.png",
+          image:
+              "assets/images/doctors/genaral_medicine_department/radiology.png",
           name: "Dr. Michael Johnson",
           qualification: "MBBS, MD, Radiologist",
           designation: "Radiologist",

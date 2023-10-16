@@ -46,6 +46,9 @@ dependencies:
   path_provider: ^2.0.2
   multi_image_picker: ^4.8.1
   sqflite: ^2.0.0+3
+  custom_date_range_picker: ^1.0.10
+  time_range: ^1.1.0
+  easy_date_timeline: ^0.1.1
  
 
 
