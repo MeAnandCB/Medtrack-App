@@ -29,8 +29,31 @@ class _PaymentSuccessScreenState extends State<PaymentSuccessScreen> {
     return Scaffold(
       body: Center(
         child: isLoading
-            ? CircularProgressIndicator(
-                color: ColorCOnstant.myRoseColor,
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(),
+                    Center(
+                      child: CircularProgressIndicator(
+                        color: ColorCOnstant.myRoseColor,
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Text(
+                          "Please wait we are processing your payment...\ndo not close/ back ..",
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    SizedBox(),
+                  ],
+                ),
               )
             : Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

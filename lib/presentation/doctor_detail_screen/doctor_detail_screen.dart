@@ -18,8 +18,8 @@ class DoctorDetailsScreen extends StatefulWidget {
 }
 
 class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
-  String startedTimeRange = 'please select any time slot';
-  String endedTimeRange = 'please select any time slot';
+  String? startedTimeRange;
+  String? endedTimeRange;
   DateTime? dateSeleted;
 
   @override
@@ -117,15 +117,8 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                   SizedBox(
                     height: 25,
                   ),
-                  // Container(
-                  //     height: 100,
-                  //     child: ListView.builder(
-                  //       scrollDirection: Axis.horizontal,
-                  //       itemBuilder: (context, index) => Container(
-                  //         width: 60,
-                  //         color: Colors.amber,
-                  //       ),
-                  //     )),
+
+                  // here is the code for confirming the date -----------------------------------------------------------------------------
                   EasyDateTimeLine(
                     activeColor: ColorCOnstant.myRoseColor,
                     initialDate: DateTime.now(),
@@ -148,7 +141,13 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                   SizedBox(
                     height: 30,
                   ),
+
+                  // selct the time for booking -----------------------------------------------------------------------------
                   TimeRange(
+                    // initialRange: TimeRangeResult(
+                    //   TimeOfDay(hour: 8, minute: 00),
+                    //   TimeOfDay(hour: 8, minute: 30),
+                    // ),
                     borderColor: ColorCOnstant.myRoseColor,
                     fromTitle: Text(
                       'From',
@@ -166,7 +165,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                     activeTextStyle: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.white),
                     backgroundColor: Colors.transparent,
-                    firstTime: TimeOfDay(hour: 14, minute: 30),
+                    firstTime: TimeOfDay(hour: 8, minute: 00),
                     lastTime: TimeOfDay(hour: 20, minute: 00),
                     activeBackgroundColor: ColorCOnstant.myRoseColor,
                     activeBorderColor: ColorCOnstant.myRoseColor,
@@ -183,10 +182,13 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                   SizedBox(
                     height: 60,
                   ),
-
+                  // book button to Confirming the null from the date and time-----------------------------------------------------------------------------
                   InkWell(
                     onTap: () {
-                      bookingConfirmationSheet(
+                      if (dateSeleted != null &&
+                          startedTimeRange != null &&
+                          endedTimeRange != null) {
+                        bookingConfirmationSheet(
                           context,
                           ModelDB.departmentsData[widget.id]
                                   .doctors[widget.indexNum].name ??
@@ -199,7 +201,34 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                               "",
                           startedTimeRange,
                           endedTimeRange,
-                          dateSeleted!);
+                          dateSeleted!,
+                          ModelDB.departmentsData[widget.id]
+                                  .doctors[widget.indexNum].consultationFee ??
+                              0.0,
+                        );
+                      } else {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('Please confirm'),
+                                content: Text('Select date and time'),
+                                actions: <Widget>[
+                                  ElevatedButton(
+                                    style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStatePropertyAll(
+                                                ColorCOnstant.myRoseColor)),
+                                    child: Text('OK'),
+                                    onPressed: () {
+                                      Navigator.of(context)
+                                          .pop(); // Close the AlertDialog
+                                    },
+                                  ),
+                                ],
+                              );
+                            });
+                      }
                     },
                     child: Container(
                       height: 60,
@@ -235,9 +264,11 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
       String desi,
       String? startdate,
       String? endtdate,
-      DateTime date) {
+      DateTime date,
+      double fee) {
     return showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       builder: (context) => SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(15),
@@ -248,10 +279,10 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                   color: Colors.black,
                 )),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 Text(
                   name,
@@ -293,7 +324,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                             Text(
                               "Your Booking time and Date \n ${startdate.toString()} to ${endtdate.toString()}",
                               style: TextStyle(
-                                  fontSize: 22,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                   color: ColorCOnstant.myRoseColor),
                               textAlign: TextAlign.center,
@@ -306,6 +337,9 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                               textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 10,
                             ),
                           ],
                         ),
@@ -326,6 +360,20 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                 ),
                 SizedBox(
                   height: 20,
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all()),
+                  child: Text(
+                    "Consultation fee : ${fee.toString()}",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
                 ),
                 ElevatedButton(
                   style: ButtonStyle(
@@ -356,8 +404,8 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                               Center(
-                                child:
-                                    Image.asset("assets/images/doctors/qr.png"),
+                                child: Image.asset(
+                                    "assets/images/doctors/genaral_medicine/qr.png"),
                               ),
                             ],
                           ),

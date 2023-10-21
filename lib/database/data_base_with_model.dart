@@ -1,4 +1,6 @@
 //doctors data model
+import 'dart:math';
+
 class Doctor {
   int id;
   String? image;
@@ -51,13 +53,13 @@ class ModelDB {
         Doctor(
           id: 1,
           image: "assets/images/doctors/genaral_medicine/1.png",
-          name: "DR. Nabil Ahamed Salim P",
+          name: "DR. Sreenivasan P",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
-          yearsOfExperience: 18,
+          yearsOfExperience: 8,
           visitedPatientCount: 500,
           ratingOutOf5: 4.9,
-          consultationFee: 75.0,
+          consultationFee: 200.0,
         ),
         Doctor(
           id: 2,
@@ -65,10 +67,10 @@ class ModelDB {
           name: "DR. K M Mathew",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
-          yearsOfExperience: 18,
+          yearsOfExperience: 12,
           visitedPatientCount: 600,
           ratingOutOf5: 4.8,
-          consultationFee: 80.0,
+          consultationFee: 250.0,
         ),
         Doctor(
           id: 3,
@@ -76,88 +78,88 @@ class ModelDB {
           name: "DR. Rachana Babu A",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
-          yearsOfExperience: 18,
+          yearsOfExperience: 10,
           visitedPatientCount: 550,
           ratingOutOf5: 4.7,
-          consultationFee: 70.0,
+          consultationFee: 180.0,
         ),
         Doctor(
           id: 4,
           image: "assets/images/doctors/genaral_medicine/3.jpeg",
-          name: "DR. Anup R Warrier(M)",
+          name: "DR. Anup R Warrier",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
-          yearsOfExperience: 18,
+          yearsOfExperience: 7,
           visitedPatientCount: 450,
           ratingOutOf5: 4.6,
-          consultationFee: 60.0,
+          consultationFee: 170.0,
         ),
         Doctor(
           id: 5,
           image: "assets/images/doctors/genaral_medicine/4.jpeg",
-          name: "DR. Arun Wilson(M)",
+          name: "DR. Arun Wilson",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
-          yearsOfExperience: 18,
+          yearsOfExperience: 9,
           visitedPatientCount: 700,
           ratingOutOf5: 4.9,
-          consultationFee: 85.0,
+          consultationFee: 260.0,
         ),
         Doctor(
           id: 6,
           image: "assets/images/doctors/genaral_medicine/5.jpeg",
-          name: "DR. Sherry Peter(M)",
+          name: "DR. Sherry Peter",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
-          yearsOfExperience: 18,
+          yearsOfExperience: 5,
           visitedPatientCount: 800,
           ratingOutOf5: 4.9,
-          consultationFee: 90.0,
+          consultationFee: 210.0,
         ),
         Doctor(
           id: 7,
           image: "assets/images/doctors/genaral_medicine/6.jpeg",
-          name: "DR. Latha P Rao(F)",
+          name: "DR. Latha P Rao",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
-          yearsOfExperience: 18,
+          yearsOfExperience: 14,
           visitedPatientCount: 400,
           ratingOutOf5: 4.7,
-          consultationFee: 75.0,
+          consultationFee: 280.0,
         ),
         Doctor(
           id: 8,
           image: "assets/images/doctors/genaral_medicine/7.jpeg",
-          name: "DR. Suma Menon N(F)",
+          name: "DR. Suma Menon N",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
-          yearsOfExperience: 18,
+          yearsOfExperience: 6,
           visitedPatientCount: 550,
           ratingOutOf5: 4.8,
-          consultationFee: 80.0,
+          consultationFee: 190.0,
         ),
         Doctor(
           id: 9,
           image: "assets/images/doctors/genaral_medicine/8.jpeg",
-          name: "DR. Jijo Paul(M)",
+          name: "DR. Jijo Paul",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
-          yearsOfExperience: 18,
+          yearsOfExperience: 13,
           visitedPatientCount: 650,
           ratingOutOf5: 4.9,
-          consultationFee: 85.0,
+          consultationFee: 270.0,
         ),
         Doctor(
           id: 10,
           image: "assets/images/doctors/genaral_medicine/9.jpeg",
-          name: "DR. Zachariah T Zachariah(M)",
+          name: "DR. Zachariah T Zachariah",
           qualification: "MBBS, MD",
           designation: "General Practitioner",
-          yearsOfExperience: 18,
+          yearsOfExperience: 11,
           visitedPatientCount: 750,
           ratingOutOf5: 4.9,
-          consultationFee: 90.0,
-        ),
+          consultationFee: 230.0,
+        )
 
         // Add more doctors for this department
       ],
@@ -171,64 +173,60 @@ class ModelDB {
       doctors: [
         Doctor(
           id: 13,
-          image:
-              "assets/images/doctors/genaral_medicine_department/oncology.png",
-          name: "Dr. Susan Miller",
+          image: "assets/images/doctors/oncology/6.jpg",
+          name: "Dr. Ananya Nair",
           qualification: "MBBS, MD, FACP",
           designation: "Oncologist",
-          yearsOfExperience: 18,
+          yearsOfExperience: 8,
           visitedPatientCount: 400,
           ratingOutOf5: 4.9,
-          consultationFee: 80,
+          consultationFee: 200.0,
         ),
         Doctor(
           id: 14,
-          image:
-              "assets/images/doctors/genaral_medicine_department/oncology.png",
-          name: "Dr. Mark Anderson",
+          image: "assets/images/doctors/oncology/1.jpg",
+          name: "Dr. Rajat Menon",
           qualification: "MBBS, MD, FACP",
           designation: "Oncologist",
-          yearsOfExperience: 20,
+          yearsOfExperience: 12,
           visitedPatientCount: 600,
           ratingOutOf5: 4.8,
-          consultationFee: 85,
+          consultationFee: 250.0,
         ),
         Doctor(
           id: 15,
-          image:
-              "assets/images/doctors/genaral_medicine_department/oncology.png",
-          name: "Dr. Emily Davis",
+          image: "assets/images/doctors/oncology/4.jpg",
+          name: "Dr. Priya Kumar",
           qualification: "MBBS, MD, FACP",
           designation: "Oncologist",
-          yearsOfExperience: 15,
+          yearsOfExperience: 10,
           visitedPatientCount: 350,
           ratingOutOf5: 4.7,
-          consultationFee: 75,
+          consultationFee: 180.0,
         ),
         Doctor(
           id: 16,
-          image:
-              "assets/images/doctors/genaral_medicine_department/oncology.png",
-          name: "Dr. Robert Clark",
+          image: "assets/images/doctors/oncology/2.png",
+          name: "Dr. Akshay Pillai",
           qualification: "MBBS, MD, FACP",
           designation: "Oncologist",
-          yearsOfExperience: 22,
+          yearsOfExperience: 7,
           visitedPatientCount: 700,
           ratingOutOf5: 4.9,
-          consultationFee: 90,
+          consultationFee: 170.0,
         ),
         Doctor(
           id: 17,
-          image:
-              "assets/images/doctors/genaral_medicine_department/oncology.png",
-          name: "Dr. Sarah Turner",
+          image: "assets/images/doctors/oncology/7.jpg",
+          name: "Dr. Neha Krishnan",
           qualification: "MBBS, MD, FACP",
           designation: "Oncologist",
-          yearsOfExperience: 19,
+          yearsOfExperience: 9,
           visitedPatientCount: 550,
           ratingOutOf5: 4.8,
-          consultationFee: 82,
-        ),
+          consultationFee: 260.0,
+        )
+
         // Add more doctors for this department
       ],
     ),
@@ -242,39 +240,36 @@ class ModelDB {
       doctors: [
         Doctor(
           id: 18,
-          image:
-              "assets/images/doctors/genaral_medicine_department/surgery.png",
-          name: "Dr. John Smith",
+          image: "assets/images/doctors/surgery/doctor1 (14).jpeg",
+          name: "Dr. Aravind Murali",
           qualification: "MBBS, MS, FACS",
           designation: "General Surgeon",
           yearsOfExperience: 15,
           visitedPatientCount: 300,
           ratingOutOf5: 4.7,
-          consultationFee: 90,
+          consultationFee: 200,
         ),
         Doctor(
           id: 19,
-          image:
-              "assets/images/doctors/genaral_medicine_department/surgery.png",
+          image: "assets/images/doctors/surgery/doctor1 (1).jpeg",
           name: "Dr. Linda Davis",
           qualification: "MBBS, MS, FACS",
           designation: "General Surgeon",
           yearsOfExperience: 18,
           visitedPatientCount: 450,
           ratingOutOf5: 4.9,
-          consultationFee: 95,
+          consultationFee: 300,
         ),
         Doctor(
           id: 20,
-          image:
-              "assets/images/doctors/genaral_medicine_department/surgery.png",
+          image: "assets/images/doctors/surgery/doctor1 (102).jpeg",
           name: "Dr. Michael Johnson",
           qualification: "MBBS, MS, FACS",
           designation: "General Surgeon",
           yearsOfExperience: 20,
           visitedPatientCount: 600,
           ratingOutOf5: 4.8,
-          consultationFee: 85,
+          consultationFee: 250,
         ),
 
         // Add more doctors for this department
@@ -288,195 +283,147 @@ class ModelDB {
       doctors: [
         Doctor(
           id: 22,
-          image:
-              "assets/images/doctors/genaral_medicine_department/emergency.png",
+          image: "assets/images/doctors/emergenct_department/doctor1 (69).jpeg",
           name: "Dr. Mark Wilson",
           qualification: "MBBS, MD, EMA",
           designation: "Emergency Physician",
           yearsOfExperience: 12,
           visitedPatientCount: 250,
           ratingOutOf5: 4.5,
-          consultationFee: 75,
+          consultationFee: 250,
         ),
         Doctor(
           id: 23,
-          image:
-              "assets/images/doctors/genaral_medicine_department/emergency.png",
+          image: "assets/images/doctors/emergenct_department/doctor1 (82).jpeg",
           name: "Dr. Sarah Adams",
           qualification: "MBBS, MD, EMA",
           designation: "Emergency Physician",
           yearsOfExperience: 14,
           visitedPatientCount: 280,
           ratingOutOf5: 4.6,
-          consultationFee: 80,
+          consultationFee: 280,
         ),
-        Doctor(
-          id: 24,
-          image:
-              "assets/images/doctors/genaral_medicine_department/emergency.png",
-          name: "Dr. James Brown",
-          qualification: "MBBS, MD, EMA",
-          designation: "Emergency Physician",
-          yearsOfExperience: 16,
-          visitedPatientCount: 300,
-          ratingOutOf5: 4.7,
-          consultationFee: 85,
-        ),
-        Doctor(
-          id: 25,
-          image:
-              "assets/images/doctors/genaral_medicine_department/emergency.png",
-          name: "Dr. Emily Smith",
-          qualification: "MBBS, MD, EMA",
-          designation: "Emergency Physician",
-          yearsOfExperience: 18,
-          visitedPatientCount: 320,
-          ratingOutOf5: 4.8,
-          consultationFee: 90,
-        ),
-        Doctor(
-          id: 26,
-          image:
-              "assets/images/doctors/genaral_medicine_department/emergency.png",
-          name: "Dr. John Turner",
-          qualification: "MBBS, MD, EMA",
-          designation: "Emergency Physician",
-          yearsOfExperience: 10,
-          visitedPatientCount: 220,
-          ratingOutOf5: 4.4,
-          consultationFee: 70,
-        ),
-        Doctor(
-          id: 27,
-          image:
-              "assets/images/doctors/genaral_medicine_department/emergency.png",
-          name: "Dr. Linda Davis",
-          qualification: "MBBS, MD, EMA",
-          designation: "Emergency Physician",
-          yearsOfExperience: 13,
-          visitedPatientCount: 260,
-          ratingOutOf5: 4.6,
-          consultationFee: 78,
-        ),
-        // Add more doctors for this department
-      ],
-    ),
 
-    //Neurology Department
-    Department(
-      id: 5,
-      image:
-          "assets/images/doctors/genaral_medicine_department/gastroenterology.png",
-      department: "Neurology Department",
-      doctors: [
-        Doctor(
-          id: 28,
-          image:
-              "assets/images/doctors/genaral_medicine_department/neurology.png",
-          name: "Dr. Alex Turner",
-          qualification: "MBBS, MD, DM",
-          designation: "Neurologist",
-          yearsOfExperience: 14,
-          visitedPatientCount: 350,
-          ratingOutOf5: 4.8,
-          consultationFee: 95,
-        ),
-        Doctor(
-          id: 29,
-          image:
-              "assets/images/doctors/genaral_medicine_department/neurology.png",
-          name: "Dr. Sarah Johnson",
-          qualification: "MBBS, MD, DM",
-          designation: "Neurologist",
-          yearsOfExperience: 12,
-          visitedPatientCount: 300,
-          ratingOutOf5: 4.7,
-          consultationFee: 90,
-        ),
         // Add more doctors for this department
       ],
     ),
     //Cardiology Department
     Department(
-      id: 6,
-      image: "assets/images/doctors/genaral_medicine_department/obstetrics.png",
+      id: 5,
+      image:
+          "assets/images/doctors/genaral_medicine_department/gastroenterology.png",
       department: "Cardiology Department",
       doctors: [
         Doctor(
-          id: 30,
-          image:
-              "assets/images/doctors/genaral_medicine_department/cardiology.png",
-          name: "Dr. John Anderson",
+          id: 1,
+          image: "assets/images/doctors/neurology_department/doctor1 (44).jpeg",
+          name: "DR.Durgapoorna",
           qualification: "MBBS, MD, FACC",
           designation: "Cardiologist",
-          yearsOfExperience: 18,
-          visitedPatientCount: 500,
+          yearsOfExperience: 8, // Updated experience to be between 2 and 10
+          visitedPatientCount: 0,
           ratingOutOf5: 4.9,
-          consultationFee: 80,
+          consultationFee: 150.0,
         ),
         Doctor(
-          id: 31,
-          image:
-              "assets/images/doctors/genaral_medicine_department/cardiology.png",
-          name: "Dr. Emily Smith",
+          id: 2,
+          image: "assets/images/doctors/neurology_department/doctor1 (90).jpeg",
+          name: "DR.Lijiya Pushpan",
           qualification: "MBBS, MD, FACC",
           designation: "Cardiologist",
-          yearsOfExperience: 20,
-          visitedPatientCount: 700,
-          ratingOutOf5: 4.8,
-          consultationFee: 85,
-        ),
-        Doctor(
-          id: 32,
-          image:
-              "assets/images/doctors/genaral_medicine_department/cardiology.png",
-          name: "Dr. Michael Turner",
-          qualification: "MBBS, MD, FACC",
-          designation: "Cardiologist",
-          yearsOfExperience: 16,
-          visitedPatientCount: 550,
+          yearsOfExperience: 5, // Updated experience to be between 2 and 10
+          visitedPatientCount: 0,
           ratingOutOf5: 4.7,
-          consultationFee: 75,
+          consultationFee: 175.0,
         ),
         Doctor(
-          id: 33,
-          image:
-              "assets/images/doctors/genaral_medicine_department/cardiology.png",
-          name: "Dr. Sarah Davis",
+          id: 3,
+          image: "assets/images/doctors/neurology_department/doctor1 (42).jpeg",
+          name: "DR.Geetha Mammayil",
           qualification: "MBBS, MD, FACC",
           designation: "Cardiologist",
-          yearsOfExperience: 22,
-          visitedPatientCount: 800,
+          yearsOfExperience: 7, // Updated experience to be between 2 and 10
+          visitedPatientCount: 0,
+          ratingOutOf5: 4.8,
+          consultationFee: 200.0,
+        ),
+        Doctor(
+          id: 4,
+          image: "assets/images/doctors/neurology_department/doctor1 (54).jpeg",
+          name: "DR.Shyam Gopal V",
+          qualification: "MBBS, MD, FACC",
+          designation: "Cardiologist",
+          yearsOfExperience: 4, // Updated experience to be between 2 and 10
+          visitedPatientCount: 0,
+          ratingOutOf5: 4.6,
+          consultationFee: 225.0,
+        ),
+        Doctor(
+          id: 5,
+          image: "assets/images/doctors/neurology_department/doctor1 (52).jpeg",
+          name: "DR.Reji Paul",
+          qualification: "MBBS, MD, FACC",
+          designation: "Cardiologist",
+          yearsOfExperience: 6, // Updated experience to be between 2 and 10
+          visitedPatientCount: 0,
+          ratingOutOf5: 4.5,
+          consultationFee: 250.0,
+        ),
+        Doctor(
+          id: 6,
+          image: "assets/images/doctors/neurology_department/doctor1 (74).jpeg",
+          name: "DR.Vijay Jayakrishnan",
+          qualification: "MBBS, MD, FACC",
+          designation: "Cardiologist",
+          yearsOfExperience: 3, // Updated experience to be between 2 and 10
+          visitedPatientCount: 0,
           ratingOutOf5: 4.9,
-          consultationFee: 90,
+          consultationFee: 275.0,
         ),
         Doctor(
-          id: 34,
-          image:
-              "assets/images/doctors/genaral_medicine_department/cardiology.png",
-          name: "Dr. Robert Johnson",
-          qualification: "MBBS, MD, FACC",
-          designation: "Cardiologist",
-          yearsOfExperience: 19,
+          id: 20,
+          image: "assets/images/doctors/neurology_department/doctor1 (65).jpeg",
+          name: "Dr. Michael Johnson",
+          qualification: "MBBS, MS, FACS",
+          designation: "General Surgeon",
+          yearsOfExperience: 10, // Updated experience to be between 2 and 10
           visitedPatientCount: 600,
           ratingOutOf5: 4.8,
-          consultationFee: 82,
-        ),
-        Doctor(
-          id: 35,
-          image:
-              "assets/images/doctors/genaral_medicine_department/cardiology.png",
-          name: "Dr. Linda Turner",
-          qualification: "MBBS, MD, FACC",
-          designation: "Cardiologist",
-          yearsOfExperience: 21,
-          visitedPatientCount: 750,
-          ratingOutOf5: 4.6,
-          consultationFee: 78,
-        ),
+          consultationFee: 200.0,
+        )
         // Add more doctors for this department
       ],
     ),
+    Department(
+        id: 6,
+        image: "assets/images/doctors/genaral_medicine_department/ent.png",
+        department: "Neurology Department",
+        doctors: [
+          Doctor(
+            id: 22,
+            image:
+                "assets/images/doctors/neurology_department/doctor1 (40).jpeg",
+            name: "Dr. Mark Wilson",
+            qualification: "MBBS, MD, EMA",
+            designation: "Neuro surgen",
+            yearsOfExperience: 12,
+            visitedPatientCount: 250,
+            ratingOutOf5: 4.5,
+            consultationFee: 250,
+          ),
+          Doctor(
+            id: 23,
+            image:
+                "assets/images/doctors/neurology_department/doctor1 (41).jpeg",
+            name: "Dr. Sarah Adams",
+            qualification: "MBBS, MD, EMA",
+            designation: "Neuro surgen",
+            yearsOfExperience: 14,
+            visitedPatientCount: 280,
+            ratingOutOf5: 4.6,
+            consultationFee: 280,
+          ),
+        ]),
     //Pediatrics Department
     Department(
       id: 7,
@@ -485,64 +432,136 @@ class ModelDB {
       department: "Pediatrics Department",
       doctors: [
         Doctor(
-          id: 36,
+          id: 40,
           image:
-              "assets/images/doctors/genaral_medicine_department/pediatrics.png",
-          name: "Dr. Sarah Johnson",
-          qualification: "MBBS, MD",
+              "assets/images/doctors/pediatrics_department/doctor1 (81).jpeg",
+          name: "DR.Chithra Thomas",
+          qualification: "MMBS, MD",
           designation: "Pediatrician",
-          yearsOfExperience: 15,
-          visitedPatientCount: 600,
-          ratingOutOf5: 4.9,
-          consultationFee: 70,
+          yearsOfExperience: 3, // Set the years of experience
+          visitedPatientCount: 115,
+          ratingOutOf5: 4.8, // Set a fixed rating
+          consultationFee: 220, // Set a fixed consultation fee
         ),
         Doctor(
-          id: 37,
+          id: 41,
           image:
-              "assets/images/doctors/genaral_medicine_department/pediatrics.png",
-          name: "Dr. Emily Turner",
-          qualification: "MBBS, MD",
+              "assets/images/doctors/pediatrics_department/doctor1 (45).jpeg",
+          name: "DR.Rajasree",
+          qualification: "MMBS, MD",
           designation: "Pediatrician",
-          yearsOfExperience: 18,
-          visitedPatientCount: 750,
-          ratingOutOf5: 4.8,
-          consultationFee: 75,
+          yearsOfExperience: 6, // Set the years of experience
+          visitedPatientCount: 365,
+          ratingOutOf5: 4.7, // Set a fixed rating
+          consultationFee: 240, // Set a fixed consultation fee
         ),
         Doctor(
-          id: 38,
+          id: 42,
           image:
-              "assets/images/doctors/genaral_medicine_department/pediatrics.png",
-          name: "Dr. Michael Davis",
-          qualification: "MBBS, MD",
+              "assets/images/doctors/pediatrics_department/doctor1 (80).jpeg",
+          name: "DR.Parvathy L",
+          qualification: "MMBS, MD",
           designation: "Pediatrician",
-          yearsOfExperience: 16,
-          visitedPatientCount: 650,
-          ratingOutOf5: 4.7,
-          consultationFee: 72,
+          yearsOfExperience: 4, // Set the years of experience
+          visitedPatientCount: 654,
+          ratingOutOf5: 4.9, // Set a fixed rating
+          consultationFee: 260, // Set a fixed consultation fee
         ),
         Doctor(
-          id: 39,
+          id: 43,
           image:
-              "assets/images/doctors/genaral_medicine_department/pediatrics.png",
-          name: "Dr. Linda Smith",
-          qualification: "MBBS, MD",
+              "assets/images/doctors/pediatrics_department/doctor1 (10).jpeg",
+          name: "DR.Prasant Narayanan",
+          qualification: "MMBS, MD",
           designation: "Pediatrician",
-          yearsOfExperience: 20,
-          visitedPatientCount: 800,
-          ratingOutOf5: 4.9,
-          consultationFee: 80,
+          yearsOfExperience: 5, // Set the years of experience
+          visitedPatientCount: 433,
+          ratingOutOf5: 4.8, // Set a fixed rating
+          consultationFee: 280, // Set a fixed consultation fee
+        ),
+        Doctor(
+          id: 44,
+          image:
+              "assets/images/doctors/pediatrics_department/doctor1 (12).jpeg",
+          name: "DR.Anoob Thomas",
+          qualification: "MMBS, MD",
+          designation: "Pediatrician",
+          yearsOfExperience: 2, // Set the years of experience
+          visitedPatientCount: 743,
+          ratingOutOf5: 4.7, // Set a fixed rating
+          consultationFee: 220, // Set a fixed consultation fee
+        ),
+        Doctor(
+          id: 45,
+          image:
+              "assets/images/doctors/pediatrics_department/doctor1 (13).jpeg",
+          name: "DR.Dinesh D Menon",
+          qualification: "MMBS, MD",
+          designation: "Pediatrician",
+          yearsOfExperience: 7, // Set the years of experience
+          visitedPatientCount: 430,
+          ratingOutOf5: 4.8, // Set a fixed rating
+          consultationFee: 250, // Set a fixed consultation fee
+        ),
+        Doctor(
+          id: 46,
+          image:
+              "assets/images/doctors/pediatrics_department/doctor1 (14).jpeg",
+          name: "DR.Narayanan unni",
+          qualification: "MMBS, MD",
+          designation: "Pediatrician",
+          yearsOfExperience: 8, // Set the years of experience
+          visitedPatientCount: 433,
+          ratingOutOf5: 4.9, // Set a fixed rating
+          consultationFee: 280, // Set a fixed consultation fee
+        ),
+        Doctor(
+          id: 47,
+          image:
+              "assets/images/doctors/pediatrics_department/doctor1 (31).jpeg",
+          name: "DR.Ashok Rijhwani",
+          qualification: "MMBS, MD",
+          designation: "Pediatrician",
+          yearsOfExperience: 10, // Set the years of experience
+          visitedPatientCount: 232,
+          ratingOutOf5: 5.0, // Set a fixed rating
+          consultationFee: 300, // Set a fixed consultation fee
+        ),
+        Doctor(
+          id: 48,
+          image: "assets/images/doctors/pediatrics_department/doctor1 (9).jpeg",
+          name: "DR.Bijoy Jose",
+          qualification: "MMBS, MD",
+          designation: "Pediatrician",
+          yearsOfExperience: 9, // Set the years of experience
+          visitedPatientCount: 221,
+          ratingOutOf5: 4.9, // Set a fixed rating
+          consultationFee: 290, // Set a fixed consultation fee
+        ),
+        Doctor(
+          id: 49,
+          image:
+              "assets/images/doctors/pediatrics_department/doctor1 (11).jpeg",
+          name: "DR.Davidson Devasia",
+          qualification: "MMBS, MD",
+          designation: "Pediatrician",
+          yearsOfExperience: 3, // Set the years of experience
+          visitedPatientCount: 452,
+          ratingOutOf5: 4.7, // Set a fixed rating
+          consultationFee: 220, // Set a fixed consultation fee
         ),
       ],
     ),
+
+    // dermatology Department
     Department(
       id: 8,
-      image: "assets/images/doctors/genaral_medicine_department/pediatrics.png",
+      image: "",
       department: "Dermatology Department",
       doctors: [
         Doctor(
           id: 40,
-          image:
-              "assets/images/doctors/genaral_medicine_department/dermatology.png",
+          image: "assets/images/doctors/dematology_department/preethy.webp",
           name: "Dr. Emily Turner",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -553,8 +572,7 @@ class ModelDB {
         ),
         Doctor(
           id: 41,
-          image:
-              "assets/images/doctors/genaral_medicine_department/dermatology.png",
+          image: "assets/images/doctors/dematology_department/pavithran.webp",
           name: "Dr. Sarah Johnson",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -565,8 +583,7 @@ class ModelDB {
         ),
         Doctor(
           id: 42,
-          image:
-              "assets/images/doctors/genaral_medicine_department/dermatology.png",
+          image: "assets/images/doctors/dematology_department/rakesh.webp",
           name: "Dr. Michael Davis",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -577,8 +594,7 @@ class ModelDB {
         ),
         Doctor(
           id: 43,
-          image:
-              "assets/images/doctors/genaral_medicine_department/dermatology.png",
+          image: "assets/images/doctors/dematology_department/mubeena.webp",
           name: "Dr. Linda Smith",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -590,7 +606,7 @@ class ModelDB {
         Doctor(
           id: 44,
           image:
-              "assets/images/doctors/genaral_medicine_department/dermatology.png",
+              "assets/images/doctors/dematology_department/doctor1 (35).jpeg",
           name: "Dr. John Anderson",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -602,7 +618,7 @@ class ModelDB {
         Doctor(
           id: 45,
           image:
-              "assets/images/doctors/genaral_medicine_department/dermatology.png",
+              "assets/images/doctors/dematology_department/Dr. Sreedevi S Nair.jpeg.webp",
           name: "Dr. Susan Turner",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -614,7 +630,7 @@ class ModelDB {
         Doctor(
           id: 46,
           image:
-              "assets/images/doctors/genaral_medicine_department/dermatology.png",
+              "assets/images/doctors/dematology_department/doctor1 (36).jpeg",
           name: "Dr. James Davis",
           qualification: "MBBS, MD",
           designation: "Dermatologist",
@@ -634,98 +650,49 @@ class ModelDB {
         Doctor(
           id: 47,
           image:
-              "assets/images/doctors/genaral_medicine_department/gynecology.png",
-          name: "Dr. Emily Turner",
+              "assets/images/doctors/gynecology_department/Dr. Sudha Krishnanunni.jpeg.webp",
+          name: "Dr. Priya Nair",
           qualification: "MBBS, MD, FACOG",
           designation: "Gynecologist",
           yearsOfExperience: 14,
           visitedPatientCount: 600,
           ratingOutOf5: 4.9,
-          consultationFee: 90,
+          consultationFee: 150,
         ),
         Doctor(
           id: 48,
           image:
-              "assets/images/doctors/genaral_medicine_department/gynecology.png",
-          name: "Dr. Sarah Johnson",
+              "assets/images/doctors/gynecology_department/Dr. Roshni Gangan.jpeg.webp",
+          name: "Dr. Sreelakshmi Menon",
           qualification: "MBBS, MD, FACOG",
           designation: "Gynecologist",
           yearsOfExperience: 16,
           visitedPatientCount: 750,
           ratingOutOf5: 4.8,
-          consultationFee: 95,
+          consultationFee: 150,
         ),
         Doctor(
           id: 49,
-          image:
-              "assets/images/doctors/genaral_medicine_department/gynecology.png",
-          name: "Dr. Linda Davis",
+          image: "assets/images/doctors/gynecology_department/dr.jpeg.webp",
+          name: "Dr. Lekshmi Suresh",
           qualification: "MBBS, MD, FACOG",
           designation: "Gynecologist",
           yearsOfExperience: 12,
           visitedPatientCount: 480,
           ratingOutOf5: 4.7,
-          consultationFee: 85,
-        ),
-        Doctor(
-          id: 50,
-          image:
-              "assets/images/doctors/genaral_medicine_department/gynecology.png",
-          name: "Dr. Michael Smith",
-          qualification: "MBBS, MD, FACOG",
-          designation: "Gynecologist",
-          yearsOfExperience: 18,
-          visitedPatientCount: 620,
-          ratingOutOf5: 4.9,
-          consultationFee: 100,
+          consultationFee: 150,
         ),
         Doctor(
           id: 51,
           image:
-              "assets/images/doctors/genaral_medicine_department/gynecology.png",
-          name: "Dr. Susan Turner",
+              "assets/images/doctors/gynecology_department/Model (1).jpg.webp",
+          name: "Dr. Sujatha Sankar",
           qualification: "MBBS, MD, FACOG",
           designation: "Gynecologist",
           yearsOfExperience: 15,
           visitedPatientCount: 550,
           ratingOutOf5: 4.8,
-          consultationFee: 92,
-        ),
-        Doctor(
-          id: 52,
-          image:
-              "assets/images/doctors/genaral_medicine_department/gynecology.png",
-          name: "Dr. James Davis",
-          qualification: "MBBS, MD, FACOG",
-          designation: "Gynecologist",
-          yearsOfExperience: 20,
-          visitedPatientCount: 700,
-          ratingOutOf5: 4.7,
-          consultationFee: 88,
-        ),
-        Doctor(
-          id: 53,
-          image:
-              "assets/images/doctors/genaral_medicine_department/gynecology.png",
-          name: "Dr. John Anderson",
-          qualification: "MBBS, MD, FACOG",
-          designation: "Gynecologist",
-          yearsOfExperience: 13,
-          visitedPatientCount: 520,
-          ratingOutOf5: 4.6,
-          consultationFee: 87,
-        ),
-        Doctor(
-          id: 54,
-          image:
-              "assets/images/doctors/genaral_medicine_department/gynecology.png",
-          name: "Dr. Robert Turner",
-          qualification: "MBBS, MD, FACOG",
-          designation: "Gynecologist",
-          yearsOfExperience: 17,
-          visitedPatientCount: 670,
-          ratingOutOf5: 4.8,
-          consultationFee: 91,
+          consultationFee: 150,
         ),
       ],
     ),
@@ -737,9 +704,8 @@ class ModelDB {
       doctors: [
         Doctor(
           id: 55,
-          image:
-              "assets/images/doctors/genaral_medicine_department/orthopedics.png",
-          name: "Dr. Mark Turner",
+          image: "assets/images/doctors/ortho_department/1.webp",
+          name: "Dr. Remesh Bhasi",
           qualification: "MBBS, MS, DNB",
           designation: "Orthopedic Surgeon",
           yearsOfExperience: 15,
@@ -749,9 +715,8 @@ class ModelDB {
         ),
         Doctor(
           id: 56,
-          image:
-              "assets/images/doctors/genaral_medicine_department/orthopedics.png",
-          name: "Dr. Sarah Johnson",
+          image: "assets/images/doctors/ortho_department/2.webp",
+          name: "Dr. Aabu Alex Thomas",
           qualification: "MBBS, MS, DNB",
           designation: "Orthopedic Surgeon",
           yearsOfExperience: 18,
@@ -761,9 +726,8 @@ class ModelDB {
         ),
         Doctor(
           id: 57,
-          image:
-              "assets/images/doctors/genaral_medicine_department/orthopedics.png",
-          name: "Dr. Emily Davis",
+          image: "assets/images/doctors/ortho_department/3.webp",
+          name: "Dr. Aabu Alex Thomas",
           qualification: "MBBS, MS, DNB",
           designation: "Orthopedic Surgeon",
           yearsOfExperience: 12,
@@ -783,8 +747,8 @@ class ModelDB {
         Doctor(
           id: 58,
           image:
-              "assets/images/doctors/genaral_medicine_department/radiology.png",
-          name: "Dr. Jennifer Turner",
+              "assets/images/doctors/radiology-department/Dr. Asha_.jpg.webp",
+          name: "Dr. Asha Kishore",
           qualification: "MBBS, MD, Radiologist",
           designation: "Radiologist",
           yearsOfExperience: 15,
@@ -795,8 +759,8 @@ class ModelDB {
         Doctor(
           id: 59,
           image:
-              "assets/images/doctors/genaral_medicine_department/radiology.png",
-          name: "Dr. Michael Johnson",
+              "assets/images/doctors/radiology-department/Dr. Sandeep.jpg.webp",
+          name: "Dr. Sandeep Padmanabhan",
           qualification: "MBBS, MD, Radiologist",
           designation: "Radiologist",
           yearsOfExperience: 18,

@@ -1,5 +1,4 @@
 import 'package:college/presentation/bottom_nav_screen/bottom_nav_screen.dart';
-
 import 'package:flutter/material.dart';
 
 void main() {

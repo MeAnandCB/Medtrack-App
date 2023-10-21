@@ -1,16 +1,13 @@
 import 'package:college/database/data_base_with_model.dart';
-import 'package:college/database/database_image.dart';
 import 'package:college/presentation/doctor_detail_screen/doctor_detail_screen.dart';
 import 'package:college/utils/color_constants/color_constant.dart';
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
 
 class DoctorsListScreen extends StatelessWidget {
   const DoctorsListScreen(
       {super.key, required this.id, required this.categoryId});
   final int id;
   final int categoryId;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,11 +66,14 @@ class DoctorsListScreen extends StatelessWidget {
                               height: 20,
                             ),
                             SizedBox(
-                              width: 200,
+                              width: 150,
                               child: Text(
                                 ModelDB.departmentsData[categoryId]
                                         .doctors[index].name ??
                                     "",
+                                textAlign: TextAlign.start,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -94,13 +94,14 @@ class DoctorsListScreen extends StatelessWidget {
                               height: 5,
                             ),
                             Text(
-                                ModelDB.departmentsData[categoryId]
-                                        .doctors[index].designation ??
-                                    "",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: ColorCOnstant.myRosedart,
-                                )),
+                              ModelDB.departmentsData[categoryId].doctors[index]
+                                      .designation ??
+                                  "",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: ColorCOnstant.myRosedart,
+                              ),
+                            ),
                             SizedBox(
                               height: 15,
                             ),
@@ -115,13 +116,14 @@ class DoctorsListScreen extends StatelessWidget {
                                   width: 10,
                                 ),
                                 Text(
-                                    ModelDB.departmentsData[categoryId]
-                                        .doctors[index].visitedPatientCount
-                                        .toString(),
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: ColorCOnstant.myText,
-                                    )),
+                                  ModelDB.departmentsData[categoryId]
+                                      .doctors[index].visitedPatientCount
+                                      .toString(),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: ColorCOnstant.myText,
+                                  ),
+                                ),
                                 SizedBox(
                                   width: 30,
                                 ),
@@ -133,15 +135,19 @@ class DoctorsListScreen extends StatelessWidget {
                                 SizedBox(
                                   width: 5,
                                 ),
-                                Text(ModelDB.departmentsData[categoryId]
-                                    .doctors[index].ratingOutOf5
-                                    .toString())
+                                Text(
+                                  ModelDB.departmentsData[categoryId]
+                                      .doctors[index].ratingOutOf5
+                                      .toString(),
+                                )
                               ],
                             ),
                           ],
                         ),
                         SizedBox(),
+                        //===============================================================================
                         SizedBox(),
+                        //===============================================================================
                         SizedBox(),
                       ],
                     ),
@@ -183,17 +189,3 @@ class DoctorsListScreen extends StatelessWidget {
         ));
   }
 }
-
-
-//  SizedBox(
-//                             width: 70,
-//                           ),
-//                           Text(
-//                             DatabaseImages.doctorsData[categoryId]['doctors']
-//                                     [index]['consultationFee']
-//                                 .toString(),
-//                             style: TextStyle(
-//                                 fontSize: 18,
-//                                 fontWeight: FontWeight.bold,
-//                                 color: ColorCOnstant.myText),
-//                           ),
