@@ -1,11 +1,46 @@
+import 'package:college/shared_preferances/shared_preferances.dart';
 import 'package:flutter/material.dart';
 
 import '../../global_widgets/textfield_refactor.dart';
 import '../../utils/color_constants/color_constant.dart';
 import '../login_screen/login_screen.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  final userController = TextEditingController();
+  final userkey = GlobalKey<FormState>();
+  String? name;
+  @override
+  void dispose() {
+    super.dispose();
+    userController.dispose();
+  }
+
+  saveData() {
+    SharedPreferencesClass().saveString(userController.text);
+    userController.clear();
+    getData();
+    setState(() {});
+  }
+
+  getData() {
+    if (SharedPreferencesClass().getString() != null) {
+      name = SharedPreferencesClass().getString();
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +87,88 @@ class RegisterScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              TextFieldRefactor(name: "User name"),
-              TextFieldRefactor(name: "password"),
+              Container(
+                padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "User name",
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Form(
+                      key: userkey,
+                      child: TextFormField(
+                        controller: userController,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: ColorCOnstant.myRoseColor),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: ColorCOnstant.myRoseColor),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          hintText: "User name",
+                          labelText: "User name",
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Password",
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: ColorCOnstant.myRoseColor),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: ColorCOnstant.myRoseColor),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        hintText: "Password",
+                        labelText: "Password",
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               SizedBox(
                 height: 30,
               ),
@@ -91,11 +206,14 @@ class RegisterScreen extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: InkWell(
           onTap: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LoginScreen(),
-                ));
+            if (userkey.currentState!.validate()) {
+              saveData();
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ));
+            }
           },
           child: Container(
             decoration: BoxDecoration(

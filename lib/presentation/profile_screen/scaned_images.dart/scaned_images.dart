@@ -96,41 +96,41 @@ class MedicalReports extends StatelessWidget {
             SizedBox(
               height: 15,
             ),
-            InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FileUploader(),
-                    ));
-              },
-              child: SizedBox(
-                height: 100,
-                width: double.infinity,
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.file_copy_sharp,
-                          size: 30,
-                        ),
-                        SizedBox(
-                          width: 30,
-                        ),
-                        Text(
-                          "Upload pdf",
-                          style: TextStyle(fontSize: 20),
-                        )
-                      ],
-                    ),
-                  ),
-                  color: ColorCOnstant.myContainerGrey,
-                ),
-              ),
-            ),
+            // InkWell(
+            //   onTap: () {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => FileUploader(),
+            //         ));
+            //   },
+            //   child: SizedBox(
+            //     height: 100,
+            //     width: double.infinity,
+            //     child: Card(
+            //       child: Padding(
+            //         padding: const EdgeInsets.symmetric(horizontal: 20),
+            //         child: Row(
+            //           mainAxisAlignment: MainAxisAlignment.start,
+            //           children: [
+            //             Icon(
+            //               Icons.file_copy_sharp,
+            //               size: 30,
+            //             ),
+            //             SizedBox(
+            //               width: 30,
+            //             ),
+            //             Text(
+            //               "Upload pdf",
+            //               style: TextStyle(fontSize: 20),
+            //             )
+            //           ],
+            //         ),
+            //       ),
+            //       color: ColorCOnstant.myContainerGrey,
+            //     ),
+            //   ),
+            // ),
             SizedBox(
               height: 15,
             ),

@@ -1,18 +1,19 @@
-import 'package:college/presentation/bottom_nav_screen/bottom_nav_screen.dart';
+import 'package:college/presentation/splash_screen/splash_screen.dart';
+import 'package:college/shared_preferances/shared_preferances.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferencesClass().init();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomNavScreen(),
+      home: SplashScreen(),
     );
   }
 }

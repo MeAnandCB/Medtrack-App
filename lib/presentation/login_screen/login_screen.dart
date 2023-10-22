@@ -1,6 +1,7 @@
 import 'package:college/global_widgets/textfield_refactor.dart';
 import 'package:college/presentation/bottom_nav_screen/bottom_nav_screen.dart';
 import 'package:college/presentation/register_screen/register_screen.dart';
+import 'package:college/shared_preferances/shared_preferances.dart';
 import 'package:college/utils/color_constants/color_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  SharedPreferencesClass obj = SharedPreferencesClass();
+  final usercontroller = TextEditingController();
+  final userkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,18 +58,104 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Column(
             children: [
-              TextFieldRefactor(name: "username"),
-              TextFieldRefactor(name: "Password"),
+              Container(
+                padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "User name",
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Form(
+                      key: userkey,
+                      child: TextFormField(
+                        controller: usercontroller,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: ColorCOnstant.myRoseColor),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: ColorCOnstant.myRoseColor),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          hintText: "User name",
+                          labelText: "User name",
+                        ),
+                        validator: (value) {
+                          if (value != obj.getString()) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Password",
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: ColorCOnstant.myRoseColor),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: ColorCOnstant.myRoseColor),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        hintText: "Password",
+                        labelText: "Password",
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               SizedBox(
                 height: 20,
               ),
               InkWell(
                 onTap: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BottomNavScreen(),
-                      ));
+                  if (userkey.currentState!.validate()) {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BottomNavScreen(),
+                        ));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Wrong user name')),
+                    );
+                  }
                 },
                 child: Container(
                   height: 50,
