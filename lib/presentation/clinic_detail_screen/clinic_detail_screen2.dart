@@ -2,6 +2,7 @@ import 'package:college/database/database_image.dart';
 import 'package:college/presentation/clinic_detail_screen/widgets/medicine_widget.dart';
 import 'package:college/utils/color_constants/color_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ClinicDetailsPage extends StatefulWidget {
   const ClinicDetailsPage({Key? key}) : super(key: key);
@@ -24,6 +25,45 @@ class _ClinicDetailsPageState extends State<ClinicDetailsPage>
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  final String mapAddress =
+      'https://maps.app.goo.gl/xmZb7e7ewDP7iehYA'; // Replace with the map address
+
+  // Function to launch the map
+  _launchMap() async {
+    if (await canLaunch(mapAddress)) {
+      await launch(mapAddress);
+    } else {
+      // Handle error
+      print('Could not launch $mapAddress');
+    }
+  }
+
+  final String phoneNumber =
+      'tel:8590775925'; // Replace with the desired phone number
+
+  // Function to launch the phone dialer
+  _launchPhoneDialer() async {
+    if (await canLaunch(phoneNumber)) {
+      await launch(phoneNumber);
+    } else {
+      // Handle error (e.g., unable to open the phone dialer)
+      print('Could not launch $phoneNumber');
+    }
+  }
+
+  final String whatsapp =
+      'whatsapp://send?phone=+918590775925'; // Replace with the desired phone number
+
+  // Function to open the WhatsApp chat
+  _openWhatsAppChat() async {
+    if (await canLaunch(phoneNumber)) {
+      await launch(phoneNumber);
+    } else {
+      // Handle error (e.g., WhatsApp not installed)
+      print('Could not open WhatsApp chat for $phoneNumber');
+    }
   }
 
   @override
@@ -109,80 +149,98 @@ class _ClinicDetailsPageState extends State<ClinicDetailsPage>
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: ColorCOnstant.myRoseColor,
+                  InkWell(
+                    onTap: () {
+                      _launchMap();
+                    },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: ColorCOnstant.myRoseColor,
+                      ),
+                      child: Center(
+                          child: Row(
+                        children: [
+                          Icon(
+                            Icons.directions,
+                            color: ColorCOnstant.myWhite,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Directions",
+                            style: TextStyle(color: ColorCOnstant.myWhite),
+                          ),
+                        ],
+                      )),
                     ),
-                    child: Center(
-                        child: Row(
-                      children: [
-                        Icon(
-                          Icons.directions,
-                          color: ColorCOnstant.myWhite,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "Directions",
-                          style: TextStyle(color: ColorCOnstant.myWhite),
-                        ),
-                      ],
-                    )),
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: ColorCOnstant.myRoseColor,
+                  InkWell(
+                    onTap: () {
+                      _launchPhoneDialer();
+                    },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: ColorCOnstant.myRoseColor,
+                      ),
+                      child: Center(
+                          child: Row(
+                        children: [
+                          Icon(
+                            Icons.phone,
+                            color: ColorCOnstant.myWhite,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Phone",
+                            style: TextStyle(color: ColorCOnstant.myWhite),
+                          ),
+                        ],
+                      )),
                     ),
-                    child: Center(
-                        child: Row(
-                      children: [
-                        Icon(
-                          Icons.chat_outlined,
-                          color: ColorCOnstant.myWhite,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "Chat",
-                          style: TextStyle(color: ColorCOnstant.myWhite),
-                        ),
-                      ],
-                    )),
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: ColorCOnstant.myRoseColor,
+                  InkWell(
+                    onTap: () {
+                      _openWhatsAppChat();
+                    },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: ColorCOnstant.myRoseColor,
+                      ),
+                      child: Center(
+                          child: Row(
+                        children: [
+                          Icon(
+                            Icons.chat_bubble_outline,
+                            color: ColorCOnstant.myWhite,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Chat",
+                            style: TextStyle(color: ColorCOnstant.myWhite),
+                          ),
+                        ],
+                      )),
                     ),
-                    child: Center(
-                        child: Row(
-                      children: [
-                        Icon(
-                          Icons.data_saver_on_sharp,
-                          color: ColorCOnstant.myWhite,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "save",
-                          style: TextStyle(color: ColorCOnstant.myWhite),
-                        ),
-                      ],
-                    )),
                   ),
                   SizedBox(
                     width: 20,

@@ -1,6 +1,7 @@
 import 'package:college/database/data_base_with_model.dart';
 import 'package:college/presentation/booking_confirmation.dart/booking_confirmation_screen.dart';
 import 'package:college/presentation/payment_success_screen/payment_success_screen.dart';
+import 'package:college/services/notification.dart';
 import 'package:college/utils/color_constants/color_constant.dart';
 
 import 'package:easy_date_timeline/easy_date_timeline.dart';
@@ -185,6 +186,9 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                   // book button to Confirming the null from the date and time-----------------------------------------------------------------------------
                   InkWell(
                     onTap: () {
+                      // NotificationService().showNotification(
+                      //     title: 'Booking Confirmation',
+                      //     body: 'your booking is Confirmation!');
                       if (dateSeleted != null &&
                           startedTimeRange != null &&
                           endedTimeRange != null) {

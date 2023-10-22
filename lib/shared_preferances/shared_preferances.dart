@@ -7,16 +7,30 @@ class SharedPreferencesClass {
     pref = await SharedPreferences.getInstance();
   }
 
-  saveString(String name) {
+  saveUser(String name) {
     pref.setString("user", name);
   }
 
-  getString() {
+  savePass(String pass) {
+    pref.setString("pass", pass);
+  }
+
+  getUserString() {
     var name = pref.getString("user");
     return name;
   }
 
-  deleteData() {
-    pref.clear();
+  getPassString() {
+    var pass = pref.getString("pass");
+    return pass;
+  }
+
+  deleteData({bool clearUser = false, bool clearPass = false}) {
+    if (clearUser) {
+      pref.remove("user");
+    }
+    if (clearPass) {
+      pref.remove("pass");
+    }
   }
 }

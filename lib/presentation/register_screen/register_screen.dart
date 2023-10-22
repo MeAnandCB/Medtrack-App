@@ -14,8 +14,11 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final userController = TextEditingController();
+  final passController = TextEditingController();
   final userkey = GlobalKey<FormState>();
+  final passKey = GlobalKey<FormState>();
   String? name;
+  String? pass;
   @override
   void dispose() {
     super.dispose();
@@ -23,15 +26,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   saveData() {
-    SharedPreferencesClass().saveString(userController.text);
+    SharedPreferencesClass().saveUser(userController.text);
+    SharedPreferencesClass().savePass(passController.text);
     userController.clear();
     getData();
     setState(() {});
   }
 
   getData() {
-    if (SharedPreferencesClass().getString() != null) {
-      name = SharedPreferencesClass().getString();
+    if (SharedPreferencesClass().getUserString() != null &&
+        SharedPreferencesClass().getUserString() != null) {
+      name = SharedPreferencesClass().getUserString();
+      pass = SharedPreferencesClass().getPassString();
     }
     setState(() {});
   }
@@ -124,7 +130,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter some text';
+                            return 'Please enter a vaild user name';
                           }
                           return null;
                         },
@@ -150,20 +156,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     SizedBox(
                       height: 10,
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: ColorCOnstant.myRoseColor),
-                          borderRadius: BorderRadius.circular(15),
+                    Form(
+                      key: passKey,
+                      child: TextFormField(
+                        controller: passController,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: ColorCOnstant.myRoseColor),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: ColorCOnstant.myRoseColor),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          hintText: "Password",
+                          labelText: "Password",
                         ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: ColorCOnstant.myRoseColor),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        hintText: "Password",
-                        labelText: "Password",
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter a vaild password';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                   ],
@@ -206,7 +222,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
         padding: const EdgeInsets.all(8.0),
         child: InkWell(
           onTap: () {
-            if (userkey.currentState!.validate()) {
+            if (userkey.currentState!.validate() &&
+                passKey.currentState!.validate()) {
               saveData();
               Navigator.pushReplacement(
                   context,

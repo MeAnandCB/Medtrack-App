@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:college/utils/color_constants/color_constant.dart';
 import 'package:path/path.dart' as path_package;
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -102,6 +103,7 @@ class _ImageCameraState extends State<ImageCamera> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: ColorCOnstant.myRoseColor,
         title: Text('Medical Reports '),
       ),
       body: Column(
@@ -134,6 +136,7 @@ class _ImageCameraState extends State<ImageCamera> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: ColorCOnstant.myRoseColor,
         onPressed: getImages,
         tooltip: 'Take a Photo',
         child: Icon(Icons.camera_alt),

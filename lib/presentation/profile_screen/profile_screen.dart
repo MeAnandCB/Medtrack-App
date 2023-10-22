@@ -1,3 +1,4 @@
+import 'package:college/global_widgets/confirmation_popup.dart';
 import 'package:college/presentation/login_screen/login_screen.dart';
 import 'package:college/presentation/profile_screen/scaned_images.dart/scaned_images.dart';
 import 'package:college/presentation/splash_screen/splash_screen.dart';
@@ -14,7 +15,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  SharedPreferencesClass obj = SharedPreferencesClass();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,14 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               InkWell(
                 onTap: () {
-                  obj.deleteData();
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SplashScreen(),
-                      ),
-                      (route) => false);
-                  setState(() {});
+                  logoutConfirmPopup(context: context);
                 },
                 child: Container(
                   height: 60,

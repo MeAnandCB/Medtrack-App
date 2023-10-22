@@ -59,10 +59,18 @@ class _PaymentSuccessScreenState extends State<PaymentSuccessScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SizedBox(),
+                  Text(
+                    "Payment Successful",
+                    style: TextStyle(
+                        fontSize: 20, color: ColorCOnstant.myRoseColor),
+                  ),
                   Container(
                     child: Center(
                         child: Lottie.asset(
                             "assets/animations/payment_success.json")),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   ElevatedButton(
                     style: ButtonStyle(

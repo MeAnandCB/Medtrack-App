@@ -1,6 +1,6 @@
 import 'package:college/presentation/profile_screen/image_upload_screen/camera_image_save.dart';
 import 'package:college/presentation/profile_screen/image_upload_screen/image_upload_screen.dart';
-import 'package:college/presentation/profile_screen/image_upload_screen/pdf.dart';
+
 import 'package:college/utils/color_constants/color_constant.dart';
 
 import 'package:flutter/material.dart';
@@ -39,14 +39,14 @@ class MedicalReports extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.camera_alt_outlined,
-                          size: 30,
+                          size: 25,
                         ),
                         SizedBox(
                           width: 30,
                         ),
                         Text(
                           "Take a picture",
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 15),
                         )
                       ],
                     ),
@@ -80,11 +80,11 @@ class MedicalReports extends StatelessWidget {
                           size: 30,
                         ),
                         SizedBox(
-                          width: 30,
+                          width: 25,
                         ),
                         Text(
                           "Gallery",
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 15),
                         )
                       ],
                     ),

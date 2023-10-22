@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NewsFeed extends StatefulWidget {
   @override
@@ -74,59 +76,70 @@ class _NewsFeedState extends State<NewsFeed> {
               itemBuilder: (context, index) {
                 if (index < healthArticles.length) {
                   final article = healthArticles[index];
-                  return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 250,
-                            width: double.infinity,
-                            child: CachedNetworkImage(
-                              imageUrl: article["urlToImage"] ?? "",
-                              fit: BoxFit.cover,
-                              placeholder: (context, url) => Center(
-                                child: CircularProgressIndicator(
-                                  color: ColorCOnstant.myRosedart,
+                  return InkWell(
+                    onTap: () {
+                      Share.share("9074834662");
+                    },
+                    child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: 250,
+                              width: double.infinity,
+                              child: CachedNetworkImage(
+                                imageUrl: article["urlToImage"] ?? "",
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) => Center(
+                                  child: CircularProgressIndicator(
+                                    color: ColorCOnstant.myRosedart,
+                                  ),
                                 ),
-                              ),
-                              errorWidget: (context, url, error) => Container(
-                                height: 250,
-                                width: double.infinity,
-                                child: Image.asset(
-                                  "assets/images/doctors_department/2.jpg",
-                                  fit: BoxFit.cover,
+                                errorWidget: (context, url, error) => Container(
+                                  height: 250,
+                                  width: double.infinity,
+                                  child: Image.asset(
+                                    "assets/images/doctors_department/2.jpg",
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            article["title"] ?? "",
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            article["publishedAt"] ?? "",
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 8.0),
-                          Text(
-                            article["description"] ?? "",
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                        ],
-                      ));
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              article["title"] ?? "",
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  article["publishedAt"] ?? "",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Text(
+                              article["description"] ?? "",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        )),
+                  );
                 } else {
                   final article =
                       generalArticles[index - healthArticles.length];
@@ -186,7 +199,6 @@ class _NewsFeedState extends State<NewsFeed> {
     );
   }
 }
-
 
 //  ListTile(
 //             leading: CachedNetworkImage(

@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 3)).then(
-      (value) => obj.getString() == null
+      (value) => obj.getUserString() == null && obj.getPassString() == null
           ? Navigator.pushReplacement(
               context,
               MaterialPageRoute(

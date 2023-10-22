@@ -66,7 +66,7 @@ class DoctorsPage extends StatelessWidget {
                           ['department'],
                       textAlign: TextAlign.center,
                       style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
                     ),
                   )
                 ],
