@@ -395,30 +395,35 @@ class _ClinicDetailsPage2State extends State<ClinicDetailsPage2>
           //   ),
           // ))
 
-          GridView(
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-            children: [
-              Container(
-                color: ColorCOnstant.myRoseColor,
-              )
-            ],
-          )
+          Expanded(
+              child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: GridView.builder(
+              itemCount: imagesList.length,
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, mainAxisSpacing: 10, crossAxisSpacing: 10),
+              itemBuilder: (context, index) => Container(
+                child: Image.asset(
+                  imagesList[index],
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ))
         ],
       ),
     );
   }
 
   List<String> imagesList = [
-    "https://content.jdmagicbox.com/comp/ernakulam/i5/0484px484.x484.181203183809.q6i5/catalogue/mannampillil-clinic-ernakulam-1tzfyrnlop.jpg",
-    "https://images1-fabric.practo.com/practices/1135769/modern-family-doctor-clinic-bangalore-594cacbf4146c.jpg",
-    "https://images1-fabric.practo.com/practices/1273268/family-doctor-clinic-bangalore-5edf5697092c4.jpg",
-    "https://content3.jdmagicbox.com/comp/allahabad/f6/0532px532.x532.181026094903.t6f6/catalogue/allahabad-clinic-alopibagh-allahabad-clinics-461444vw4a.jpg",
-    "https://images1-fabric.practo.com/practices/782079/tanushri-clinic-allahabad-58e364b6de4ef.jpg/large",
-    "https://images1-fabric.practo.com/practices/662713/sparsh-clinic-pune-59661d1196f5b.jpg/large",
-    "https://i0.wp.com/pediaa.com/wp-content/uploads/2016/06/Difference-Between-Clinic-and-Hospital-image-2.jpg?resize=554%2C369",
-    "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202112/Mohalla_clinic_1200x768.jpeg?size=690:388",
-    "https://cbphysiotherapy.in/storage/images/user_image/cb-physiotherapy-clinic-jayanagar.webp",
-    "https://images1-fabric.practo.com/practices/1234205/physioselect-hyderabad-5bf3f79f3c51b.jpeg/large",
+    "assets/images/1.jpg",
+    "assets/images/2.jpg",
+    "assets/images/3.jpg",
+    "assets/images/4.jpg",
+    "assets/images/5.jpg",
+    "assets/images/6.jpg",
+    "assets/images/7.jpg",
   ];
 }
