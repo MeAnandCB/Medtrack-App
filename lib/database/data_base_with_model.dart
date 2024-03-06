@@ -1,5 +1,4 @@
 //doctors data model
-import 'dart:math';
 
 class Doctor {
   int id;
