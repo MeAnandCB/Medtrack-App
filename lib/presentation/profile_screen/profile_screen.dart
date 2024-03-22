@@ -1,5 +1,6 @@
 import 'package:college/global_widgets/confirmation_popup.dart';
 import 'package:college/presentation/login_screen/login_screen.dart';
+import 'package:college/presentation/profile_details/profile_details.dart';
 import 'package:college/presentation/profile_screen/scaned_images.dart/scaned_images.dart';
 import 'package:college/presentation/splash_screen/splash_screen.dart';
 import 'package:college/shared_preferances/shared_preferances.dart';
@@ -27,6 +28,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           child: Column(
             children: [
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //           builder: (context) => ProfileDetails(),
+              //         ));
+              //   },
+              //   child: SizedBox(
+              //     height: 80,
+              //     width: double.infinity,
+              //     child: Card(
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.center,
+              //         children: [
+              //           Icon(
+              //             Icons.person,
+              //             size: 25,
+              //           ),
+              //           SizedBox(
+              //             width: 30,
+              //           ),
+              //           Text(
+              //             "Profie Details",
+              //             style: TextStyle(fontSize: 15),
+              //           )
+              //         ],
+              //       ),
+              //       color: ColorCOnstant.myContainerGrey,
+              //     ),
+              //   ),
+              // ),
+              SizedBox(
+                height: 20,
+              ),
               InkWell(
                 onTap: () {
                   Navigator.push(

@@ -1,3 +1,4 @@
+import 'package:college/presentation/booking_history_screen/view/booking_history.dart';
 import 'package:college/presentation/clinics_screen/clinics_screen.dart';
 import 'package:college/presentation/newsfeed_screen/newsfeed_screen.dart';
 
@@ -20,6 +21,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     DoctorsPage(),
     ClinicsScreen(),
     NewsFeed(),
+    BookingHistory(),
     ProfileScreen()
   ];
   @override
@@ -42,6 +44,8 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                 icon: Icon(Icons.business_outlined), label: "Clinic"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.newspaper_sharp), label: "News"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.history), label: "History"),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
           ]),
     );

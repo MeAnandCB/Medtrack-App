@@ -1,4 +1,8 @@
+import 'dart:math';
+
+import 'package:college/box/box.dart';
 import 'package:college/database/data_base_with_model.dart';
+import 'package:college/model/history_model.dart';
 import 'package:college/presentation/booking_confirmation.dart/booking_confirmation_screen.dart';
 import 'package:college/presentation/payment_success_screen/payment_success_screen.dart';
 import 'package:college/services/notification.dart';
@@ -19,9 +23,31 @@ class DoctorDetailsScreen extends StatefulWidget {
 }
 
 class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
-  String? startedTimeRange;
-  String? endedTimeRange;
-  DateTime? dateSeleted;
+  String? startedTime = '';
+
+  DateTime selectedDate = DateTime.now();
+  TimeOfDay selectedTime = TimeOfDay.now();
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2101),
+    );
+    if (pickedDate != null && pickedDate != selectedDate)
+      setState(() {
+        selectedDate = pickedDate;
+      });
+  }
+
+  Future<void> _selectTime(BuildContext context) async {
+    final TimeOfDay? pickedTime =
+        await showTimePicker(context: context, initialTime: selectedTime);
+    if (pickedTime != null && pickedTime != selectedTime)
+      setState(() {
+        selectedTime = pickedTime;
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,17 +146,47 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                   ),
 
                   // here is the code for confirming the date -----------------------------------------------------------------------------
-                  EasyDateTimeLine(
-                    activeColor: ColorCOnstant.myRoseColor,
-                    initialDate: DateTime.now(),
-                    onDateChange: (selectedDate) {
-                      setState(() {
-                        dateSeleted = selectedDate;
-                      });
-                    },
+                  // EasyDateTimeLine(
+                  //   activeColor: ColorCOnstant.myRoseColor,
+                  //   initialDate: DateTime.now(),
+                  //   onDateChange: (selectedDate) {
+                  //     setState(() {
+                  //       dateSeleted = selectedDate;
+                  //     });
+                  //   },
+                  // ),
+                  Text(
+                    "Select your Date",
+                    style: TextStyle(
+                        color: ColorCOnstant.myText,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 20,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: ColorCOnstant.myRoseColor)),
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          ' ${selectedDate.day}-${selectedDate.month}-${selectedDate.year}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        IconButton(
+                            onPressed: () => _selectDate(context),
+                            icon: Icon(Icons.calendar_month_rounded))
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   Text(
                     "Select your time slot",
@@ -140,99 +196,73 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                         fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
 
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: ColorCOnstant.myRoseColor)),
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '${selectedTime.hour}:${selectedTime.minute}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        IconButton(
+                            onPressed: () => _selectTime(context),
+                            icon: Icon(Icons.av_timer_rounded))
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+
                   // selct the time for booking -----------------------------------------------------------------------------
-                  TimeRange(
-                    // initialRange: TimeRangeResult(
-                    //   TimeOfDay(hour: 8, minute: 00),
-                    //   TimeOfDay(hour: 8, minute: 30),
-                    // ),
-                    borderColor: ColorCOnstant.myRoseColor,
-                    fromTitle: Text(
-                      'From',
-                      style: TextStyle(
-                          fontSize: 18, color: ColorCOnstant.myRoseColor),
-                    ),
-                    toTitle: Text(
-                      'To',
-                      style: TextStyle(
-                          fontSize: 18, color: ColorCOnstant.myRoseColor),
-                    ),
-                    titlePadding: 20,
-                    textStyle: TextStyle(
-                        fontWeight: FontWeight.normal, color: Colors.black87),
-                    activeTextStyle: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.white),
-                    backgroundColor: Colors.transparent,
-                    firstTime: TimeOfDay(hour: 8, minute: 00),
-                    lastTime: TimeOfDay(hour: 20, minute: 00),
-                    activeBackgroundColor: ColorCOnstant.myRoseColor,
-                    activeBorderColor: ColorCOnstant.myRoseColor,
-                    timeStep: 10,
-                    timeBlock: 30,
-                    onRangeCompleted: (range) {
-                      setState(() {
-                        startedTimeRange = range!.start.format(context);
-                        endedTimeRange = range.end.format(context);
-                        print(startedTimeRange);
-                      });
-                    },
-                  ),
-                  SizedBox(
-                    height: 60,
-                  ),
+
                   // book button to Confirming the null from the date and time-----------------------------------------------------------------------------
                   InkWell(
                     onTap: () {
-                      // NotificationService().showNotification(
-                      //     title: 'Booking Confirmation',
-                      //     body: 'your booking is Confirmation!');
-                      if (dateSeleted != null &&
-                          startedTimeRange != null &&
-                          endedTimeRange != null) {
-                        bookingConfirmationSheet(
-                          context,
+                      startedTime =
+                          '${selectedTime.hour}:${selectedTime.minute}';
+                      print(startedTime);
+                      // Navigator.pushReplacement(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) => PaymentSuccessScreen(),
+                      //     ));
+                      bookingConfirmationSheet(
                           ModelDB.departmentsData[widget.id]
-                                  .doctors[widget.indexNum].name ??
-                              "",
+                              .doctors[widget.indexNum].name,
                           ModelDB.departmentsData[widget.id]
-                                  .doctors[widget.indexNum].qualification ??
-                              "",
+                              .doctors[widget.indexNum].qualification,
                           ModelDB.departmentsData[widget.id]
-                                  .doctors[widget.indexNum].designation ??
-                              "",
-                          startedTimeRange,
-                          endedTimeRange,
-                          dateSeleted!,
+                              .doctors[widget.indexNum].designation,
+                          selectedDate.toString(),
+                          startedTime.toString(),
                           ModelDB.departmentsData[widget.id]
-                                  .doctors[widget.indexNum].consultationFee ??
-                              0.0,
-                        );
-                      } else {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text('Please confirm'),
-                                content: Text('Select date and time'),
-                                actions: <Widget>[
-                                  ElevatedButton(
-                                    style: ButtonStyle(
-                                        backgroundColor:
-                                            MaterialStatePropertyAll(
-                                                ColorCOnstant.myRoseColor)),
-                                    child: Text('OK'),
-                                    onPressed: () {
-                                      Navigator.of(context)
-                                          .pop(); // Close the AlertDialog
-                                    },
-                                  ),
-                                ],
-                              );
-                            });
-                      }
+                              .doctors[widget.indexNum].consultationFee
+                              .toString());
+
+                      historyBox.put(
+                        'key ${generateRandomNumber()}',
+                        HistoryModel(
+                            name: ModelDB.departmentsData[widget.id]
+                                .doctors[widget.indexNum].name,
+                            time: startedTime.toString(),
+                            date: selectedDate.toString(),
+                            department: ModelDB.departmentsData[widget.id]
+                                .doctors[widget.indexNum].designation,
+                            fee: ModelDB.departmentsData[widget.id]
+                                .doctors[widget.indexNum].consultationFee
+                                .toString(),
+                            image: ModelDB.departmentsData[widget.id]
+                                .doctors[widget.indexNum].image),
+                      );
+                      setState(() {});
                     },
                     child: Container(
                       height: 60,
@@ -262,14 +292,13 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
   }
 
   Future<dynamic> bookingConfirmationSheet(
-      BuildContext context,
+      // {required BuildContext context,
       String name,
       String qualif,
       String desi,
-      String? startdate,
-      String? endtdate,
-      DateTime date,
-      double fee) {
+      String date,
+      String time,
+      String fee) {
     return showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -326,7 +355,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                         Column(
                           children: [
                             Text(
-                              "Your Booking time and Date \n ${startdate.toString()} to ${endtdate.toString()}",
+                              "Your Booking time and Date \n",
                               style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -337,7 +366,16 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                               height: 15,
                             ),
                             Text(
-                              "Date :${formatter(dateSeleted.toString())}",
+                              "Time :$time",
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Date :${formatter(date.toString())}",
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                               textAlign: TextAlign.center,
@@ -371,7 +409,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all()),
                   child: Text(
-                    "Consultation fee : ${fee.toString()}",
+                    "Consultation fee : $fee ",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
@@ -424,7 +462,10 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                               ),
                             ));
                   },
-                  child: Text("Proceed "),
+                  child: Text(
+                    "Proceed ",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 SizedBox(
                   height: 30,
@@ -441,5 +482,12 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
     String originalString = datetime;
     String resultString = originalString.substring(0, 10);
     return resultString.toString();
+  }
+
+  int generateRandomNumber() {
+    int min = 0;
+    int max = 100;
+    final Random random = Random();
+    return min + random.nextInt(max - min + 1);
   }
 }

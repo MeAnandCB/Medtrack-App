@@ -3,24 +3,24 @@
 class Doctor {
   int id;
   String? image;
-  String? name;
-  String? qualification;
-  String? designation;
+  String name;
+  String qualification;
+  String designation;
   int? yearsOfExperience;
   int? visitedPatientCount;
   double? ratingOutOf5;
-  double? consultationFee;
+  double consultationFee;
 
   Doctor({
     required this.id,
     this.image,
-    this.name,
-    this.qualification,
-    this.designation,
+    required this.name,
+    required this.qualification,
+    required this.designation,
     this.yearsOfExperience,
     this.visitedPatientCount,
     this.ratingOutOf5,
-    this.consultationFee,
+    required this.consultationFee,
   });
 }
 
@@ -35,7 +35,7 @@ class Department {
   Department({
     required this.id,
     this.image,
-    this.department,
+    required this.department,
     this.name,
     required this.doctors,
   });
@@ -770,4 +770,6 @@ class ModelDB {
       ],
     ),
   ];
+
+  static List<Map<dynamic, dynamic>> myProfileData = [];
 }

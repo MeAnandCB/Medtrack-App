@@ -4,8 +4,8 @@ import '../utils/color_constants/color_constant.dart';
 
 class TextFieldRefactor extends StatelessWidget {
   final String name;
-  TextEditingController namecontroller = TextEditingController();
-  TextFieldRefactor({super.key, required this.name});
+  TextEditingController? namecontroller;
+  TextFieldRefactor({super.key, required this.name, this.namecontroller});
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +27,7 @@ class TextFieldRefactor extends StatelessWidget {
             height: 10,
           ),
           TextField(
+            controller: namecontroller,
             decoration: InputDecoration(
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: ColorCOnstant.myRoseColor),
