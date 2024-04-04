@@ -37,7 +37,7 @@ class _PaymentSuccessScreenState extends State<PaymentSuccessScreen> {
                     SizedBox(),
                     Center(
                       child: CircularProgressIndicator(
-                        color: ColorCOnstant.myRoseColor,
+                        color: ColorCOnstant.myBlueColor,
                       ),
                     ),
                     Column(
@@ -62,7 +62,7 @@ class _PaymentSuccessScreenState extends State<PaymentSuccessScreen> {
                   Text(
                     "Payment Successful",
                     style: TextStyle(
-                        fontSize: 20, color: ColorCOnstant.myRoseColor),
+                        fontSize: 20, color: ColorCOnstant.myBlueColor),
                   ),
                   Container(
                     child: Center(
@@ -75,7 +75,7 @@ class _PaymentSuccessScreenState extends State<PaymentSuccessScreen> {
                   ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(
-                            ColorCOnstant.myRoseColor)),
+                            ColorCOnstant.myBlueColor)),
                     onPressed: () {
                       Navigator.pushAndRemoveUntil(
                           context,

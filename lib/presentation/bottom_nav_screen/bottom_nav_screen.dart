@@ -1,5 +1,6 @@
 import 'package:college/presentation/booking_history_screen/view/booking_history.dart';
 import 'package:college/presentation/clinics_screen/clinics_screen.dart';
+import 'package:college/presentation/hospital_list_screen/view/hospital_list_screen.dart';
 import 'package:college/presentation/newsfeed_screen/newsfeed_screen.dart';
 
 import 'package:college/utils/color_constants/color_constant.dart';
@@ -18,8 +19,9 @@ class BottomNavScreen extends StatefulWidget {
 class _BottomNavScreenState extends State<BottomNavScreen> {
   int _selectedIndex = 0;
   List<Widget> _screens = [
-    DoctorsPage(),
-    ClinicsScreen(),
+    HospitalListScreen(),
+    // DoctorsPage(),
+    // ClinicsScreen(),
     NewsFeed(),
     BookingHistory(),
     ProfileScreen()
@@ -35,13 +37,13 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
             _selectedIndex = value;
             setState(() {});
           },
-          selectedItemColor: ColorCOnstant.myRoseColor,
+          selectedItemColor: ColorCOnstant.myBlueColor,
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.medical_information_outlined),
                 label: "Doctor's"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.business_outlined), label: "Clinic"),
+            // BottomNavigationBarItem(
+            //     icon: Icon(Icons.business_outlined), label: "Clinic"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.newspaper_sharp), label: "News"),
             BottomNavigationBarItem(

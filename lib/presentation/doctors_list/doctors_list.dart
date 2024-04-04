@@ -13,9 +13,12 @@ class DoctorsListScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: ColorCOnstant.myContainerGrey,
         appBar: AppBar(
-            backgroundColor: ColorCOnstant.myRoseColor,
+            backgroundColor: ColorCOnstant.myBlueColor,
             title: id == categoryId + 1
-                ? Text(ModelDB.departmentsData[categoryId].department ?? "")
+                ? Text(
+                    ModelDB.departmentsData[categoryId].department ?? "",
+                    style: TextStyle(color: Colors.white),
+                  )
                 : Text("")),
         body: ListView.separated(
           itemCount: ModelDB.departmentsData[categoryId].doctors.length,
@@ -87,7 +90,7 @@ class DoctorsListScreen extends StatelessWidget {
                               "(${ModelDB.departmentsData[categoryId].doctors[index].qualification ?? ""})",
                               style: TextStyle(
                                 fontSize: 12,
-                                color: ColorCOnstant.myRosedart,
+                                color: ColorCOnstant.myLiteBlue,
                               ),
                             ),
                             SizedBox(
@@ -99,7 +102,7 @@ class DoctorsListScreen extends StatelessWidget {
                                   "",
                               style: TextStyle(
                                 fontSize: 14,
-                                color: ColorCOnstant.myRosedart,
+                                color: ColorCOnstant.myLiteBlue,
                               ),
                             ),
                             SizedBox(
@@ -110,7 +113,7 @@ class DoctorsListScreen extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.group_rounded,
-                                  color: ColorCOnstant.myRosedart,
+                                  color: ColorCOnstant.myLiteBlue,
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -161,14 +164,14 @@ class DoctorsListScreen extends StatelessWidget {
                           "Years Of Experience :  ${ModelDB.departmentsData[categoryId].doctors[index].yearsOfExperience ?? "".toString()}",
                           style: TextStyle(
                             fontSize: 14,
-                            color: ColorCOnstant.myRosedart,
+                            color: ColorCOnstant.myLiteBlue,
                           ),
                         ),
                         Container(
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: ColorCOnstant.myRoseColor,
+                            color: ColorCOnstant.myBlueColor,
                           ),
                           child: Text("Book Now",
                               style: TextStyle(

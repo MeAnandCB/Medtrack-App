@@ -1,4 +1,5 @@
 import 'package:college/presentation/bottom_nav_screen/bottom_nav_screen.dart';
+import 'package:college/presentation/hospital_list_screen/view/hospital_list_screen.dart';
 import 'package:college/presentation/login_screen/login_screen.dart';
 import 'package:college/presentation/register_screen/register_screen.dart';
 import 'package:college/shared_preferances/shared_preferances.dart';

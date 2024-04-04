@@ -69,7 +69,7 @@ class _ClinicDetailsPage3State extends State<ClinicDetailsPage3>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: ColorCOnstant.myRoseColor),
+      appBar: AppBar(backgroundColor: ColorCOnstant.myBlueColor),
       body: ListView(
         children: [
           Padding(
@@ -159,7 +159,7 @@ class _ClinicDetailsPage3State extends State<ClinicDetailsPage3>
                           EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        color: ColorCOnstant.myRoseColor,
+                        color: ColorCOnstant.myBlueColor,
                       ),
                       child: Center(
                           child: Row(
@@ -191,7 +191,7 @@ class _ClinicDetailsPage3State extends State<ClinicDetailsPage3>
                           EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        color: ColorCOnstant.myRoseColor,
+                        color: ColorCOnstant.myBlueColor,
                       ),
                       child: Center(
                           child: Row(
@@ -223,7 +223,7 @@ class _ClinicDetailsPage3State extends State<ClinicDetailsPage3>
                           EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        color: ColorCOnstant.myRoseColor,
+                        color: ColorCOnstant.myBlueColor,
                       ),
                       child: Center(
                           child: Row(
@@ -250,7 +250,7 @@ class _ClinicDetailsPage3State extends State<ClinicDetailsPage3>
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
-                      color: ColorCOnstant.myRoseColor,
+                      color: ColorCOnstant.myBlueColor,
                     ),
                     child: Center(
                         child: Row(
@@ -327,8 +327,8 @@ class _ClinicDetailsPage3State extends State<ClinicDetailsPage3>
                         ),
                       ))),
           TabBar(
-            labelColor: ColorCOnstant.myRoseColor,
-            indicatorColor: ColorCOnstant.myRoseColor,
+            labelColor: ColorCOnstant.myBlueColor,
+            indicatorColor: ColorCOnstant.myBlueColor,
             controller: _tabController,
             indicatorWeight: 5,
             tabs: [

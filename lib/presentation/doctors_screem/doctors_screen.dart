@@ -10,9 +10,12 @@ class DoctorsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ColorCOnstant.myRoseColor,
+        backgroundColor: ColorCOnstant.myBlueColor,
         centerTitle: true,
-        title: Text("Departments"),
+        title: Text(
+          "Departments",
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: GridView.builder(
         itemCount: DatabaseImages.databaseImagesDepartment.length,

@@ -72,7 +72,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Text(
                 "Create New Account",
                 style:
-                    TextStyle(fontSize: 20, color: ColorCOnstant.myRoseColor),
+                    TextStyle(fontSize: 20, color: ColorCOnstant.myBlueColor),
               ),
               SizedBox(
                 height: 20,
@@ -88,7 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Text(
                       "Password",
                       style: TextStyle(
-                          fontSize: 20, color: ColorCOnstant.myRoseColor),
+                          fontSize: 20, color: ColorCOnstant.myBlueColor),
                     ),
                   ],
                 ),
@@ -117,12 +117,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                                BorderSide(color: ColorCOnstant.myRoseColor),
+                                BorderSide(color: ColorCOnstant.myBlueColor),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide:
-                                BorderSide(color: ColorCOnstant.myRoseColor),
+                                BorderSide(color: ColorCOnstant.myBlueColor),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           hintText: "User name",
@@ -163,12 +163,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                                BorderSide(color: ColorCOnstant.myRoseColor),
+                                BorderSide(color: ColorCOnstant.myBlueColor),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide:
-                                BorderSide(color: ColorCOnstant.myRoseColor),
+                                BorderSide(color: ColorCOnstant.myBlueColor),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           hintText: "Password",
@@ -235,7 +235,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              color: ColorCOnstant.myRoseColor,
+              color: ColorCOnstant.myBlueColor,
             ),
             height: 50,
             child: Center(

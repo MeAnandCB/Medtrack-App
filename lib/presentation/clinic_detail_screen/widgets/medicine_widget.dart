@@ -103,15 +103,15 @@ class _MedicineListState extends State<MedicineList> {
             },
             decoration: InputDecoration(
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: ColorCOnstant.myRoseColor),
+                borderSide: BorderSide(color: ColorCOnstant.myBlueColor),
                 borderRadius: BorderRadius.circular(15),
               ),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: ColorCOnstant.myRoseColor),
+                borderSide: BorderSide(color: ColorCOnstant.myBlueColor),
                 borderRadius: BorderRadius.circular(15),
               ),
-              labelStyle: TextStyle(color: ColorCOnstant.myRoseColor),
-              hintStyle: TextStyle(color: ColorCOnstant.myRoseColor),
+              labelStyle: TextStyle(color: ColorCOnstant.myBlueColor),
+              hintStyle: TextStyle(color: ColorCOnstant.myBlueColor),
               hintText: "search your medicine",
               labelText: "search your medicine",
             ),
@@ -173,7 +173,7 @@ class _MedicineListState extends State<MedicineList> {
                   style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
-                      color: ColorCOnstant.myRoseColor),
+                      color: ColorCOnstant.myBlueColor),
                 ),
               );
             },

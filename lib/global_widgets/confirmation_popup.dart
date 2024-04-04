@@ -15,14 +15,14 @@ Future<bool> logoutConfirmPopup({required BuildContext context}) async {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
             title: CircleAvatar(
               radius: 24,
-              backgroundColor: ColorCOnstant.myRoseColor,
+              backgroundColor: ColorCOnstant.myBlueColor,
               child: CircleAvatar(
                 radius: 22,
                 backgroundColor: Colors.white,
                 child: Icon(
                   Icons.logout,
                   size: 25,
-                  color: ColorCOnstant.myRoseColor,
+                  color: ColorCOnstant.myBlueColor,
                 ),
               ),
             ),
@@ -45,7 +45,7 @@ Future<bool> logoutConfirmPopup({required BuildContext context}) async {
                         height: 40,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: ColorCOnstant.myRoseColor),
+                          border: Border.all(color: ColorCOnstant.myBlueColor),
                         ),
                         child: Center(
                           child: Text(
@@ -53,7 +53,7 @@ Future<bool> logoutConfirmPopup({required BuildContext context}) async {
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
-                                color: ColorCOnstant.myRoseColor),
+                                color: ColorCOnstant.myBlueColor),
                           ),
                         ),
                       ),
@@ -80,7 +80,7 @@ Future<bool> logoutConfirmPopup({required BuildContext context}) async {
                         height: 40,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: ColorCOnstant.myRoseColor),
+                            color: ColorCOnstant.myBlueColor),
                         child: Center(
                           child: Text(
                             "Yes",

@@ -120,7 +120,7 @@ class _ImageGalleryState extends State<ImageGallery> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ColorCOnstant.myRoseColor,
+        backgroundColor: ColorCOnstant.myBlueColor,
         title: Text('Medical Reports'),
       ),
       body: Column(
@@ -157,7 +157,7 @@ class _ImageGalleryState extends State<ImageGallery> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            backgroundColor: ColorCOnstant.myRoseColor,
+            backgroundColor: ColorCOnstant.myBlueColor,
             onPressed: getImages,
             tooltip: 'Pick Images',
             child: Icon(Icons.image),

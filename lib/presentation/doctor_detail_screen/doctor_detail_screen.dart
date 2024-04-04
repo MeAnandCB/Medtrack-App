@@ -53,7 +53,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ColorCOnstant.myRoseColor,
+        backgroundColor: ColorCOnstant.myBlueColor,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -108,7 +108,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                   Container(
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      border: Border.all(color: ColorCOnstant.myRoseColor),
+                      border: Border.all(color: ColorCOnstant.myBlueColor),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
@@ -169,7 +169,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: ColorCOnstant.myRoseColor)),
+                        border: Border.all(color: ColorCOnstant.myBlueColor)),
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -203,7 +203,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: ColorCOnstant.myRoseColor)),
+                        border: Border.all(color: ColorCOnstant.myBlueColor)),
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -267,7 +267,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                     child: Container(
                       height: 60,
                       width: double.infinity,
-                      color: ColorCOnstant.myRoseColor,
+                      color: ColorCOnstant.myBlueColor,
                       child: Center(
                         child: Text(
                           "BOOK NOW",
@@ -320,7 +320,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                 Text(
                   name,
                   style: TextStyle(
-                      color: ColorCOnstant.myRoseColor,
+                      color: ColorCOnstant.myBlueColor,
                       fontSize: 22,
                       fontWeight: FontWeight.bold),
                 ),
@@ -359,7 +359,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                               style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
-                                  color: ColorCOnstant.myRoseColor),
+                                  color: ColorCOnstant.myBlueColor),
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(
@@ -420,7 +420,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                 ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor:
-                          MaterialStatePropertyAll(ColorCOnstant.myRoseColor)),
+                          MaterialStatePropertyAll(ColorCOnstant.myBlueColor)),
                   onPressed: () {
                     Future.delayed(Duration(seconds: 3))
                         .then((value) => Navigator.pushReplacement(

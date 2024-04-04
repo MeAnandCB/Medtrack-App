@@ -12,7 +12,7 @@ class MedicalReports extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ColorCOnstant.myRoseColor,
+        backgroundColor: ColorCOnstant.myBlueColor,
         centerTitle: true,
         title: Text("Reports"),
       ),

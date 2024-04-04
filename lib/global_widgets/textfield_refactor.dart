@@ -30,11 +30,11 @@ class TextFieldRefactor extends StatelessWidget {
             controller: namecontroller,
             decoration: InputDecoration(
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: ColorCOnstant.myRoseColor),
+                borderSide: BorderSide(color: ColorCOnstant.myBlueColor),
                 borderRadius: BorderRadius.circular(15),
               ),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: ColorCOnstant.myRoseColor),
+                borderSide: BorderSide(color: ColorCOnstant.myBlueColor),
                 borderRadius: BorderRadius.circular(15),
               ),
               hintText: name,

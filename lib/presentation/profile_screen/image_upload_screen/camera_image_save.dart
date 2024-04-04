@@ -103,7 +103,7 @@ class _ImageCameraState extends State<ImageCamera> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ColorCOnstant.myRoseColor,
+        backgroundColor: ColorCOnstant.myBlueColor,
         title: Text('Medical Reports '),
       ),
       body: Column(
@@ -136,7 +136,7 @@ class _ImageCameraState extends State<ImageCamera> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: ColorCOnstant.myRoseColor,
+        backgroundColor: ColorCOnstant.myBlueColor,
         onPressed: getImages,
         tooltip: 'Take a Photo',
         child: Icon(Icons.camera_alt),

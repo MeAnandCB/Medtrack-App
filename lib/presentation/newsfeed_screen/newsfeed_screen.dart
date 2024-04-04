@@ -63,13 +63,13 @@ class _NewsFeedState extends State<NewsFeed> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ColorCOnstant.myRoseColor,
+        backgroundColor: ColorCOnstant.myBlueColor,
         title: Text("Health News Feed"),
       ),
       body: isLoading == true
           ? Center(
               child: CircularProgressIndicator(
-              color: ColorCOnstant.myRoseColor,
+              color: ColorCOnstant.myBlueColor,
             ))
           : ListView.builder(
               itemCount: healthArticles.length + generalArticles.length,
@@ -93,7 +93,7 @@ class _NewsFeedState extends State<NewsFeed> {
                                 fit: BoxFit.cover,
                                 placeholder: (context, url) => Center(
                                   child: CircularProgressIndicator(
-                                    color: ColorCOnstant.myRosedart,
+                                    color: ColorCOnstant.myLiteBlue,
                                   ),
                                 ),
                                 errorWidget: (context, url, error) => Container(
@@ -156,7 +156,7 @@ class _NewsFeedState extends State<NewsFeed> {
                               fit: BoxFit.cover,
                               placeholder: (context, url) => Center(
                                 child: CircularProgressIndicator(
-                                  color: ColorCOnstant.myRosedart,
+                                  color: ColorCOnstant.myLiteBlue,
                                 ),
                               ),
                               errorWidget: (context, url, error) => Container(

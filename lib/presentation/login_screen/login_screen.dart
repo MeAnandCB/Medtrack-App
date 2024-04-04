@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         "Welcome",
                         style: TextStyle(
-                            color: ColorCOnstant.myRoseColor, fontSize: 30),
+                            color: ColorCOnstant.myBlueColor, fontSize: 30),
                       ),
                     ],
                   ),
@@ -90,12 +90,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: ColorCOnstant.myRoseColor),
+                                  BorderSide(color: ColorCOnstant.myBlueColor),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: ColorCOnstant.myRoseColor),
+                                  BorderSide(color: ColorCOnstant.myBlueColor),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             hintText: "User name",
@@ -135,12 +135,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: ColorCOnstant.myRoseColor),
+                                  BorderSide(color: ColorCOnstant.myBlueColor),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: ColorCOnstant.myRoseColor),
+                                  BorderSide(color: ColorCOnstant.myBlueColor),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             hintText: "Password",
@@ -172,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text('Login Successfull'),
-                          backgroundColor: ColorCOnstant.myRoseColor,
+                          backgroundColor: ColorCOnstant.myBlueColor,
                         ),
                       );
                     } else {
@@ -186,7 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: ColorCOnstant.myRoseColor,
+                      color: ColorCOnstant.myBlueColor,
                     ),
                     child: Center(
                       child: Text("Login",
