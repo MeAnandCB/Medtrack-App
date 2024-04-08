@@ -1,16 +1,15 @@
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:college/box/box.dart';
 import 'package:college/database/data_base_with_model.dart';
 import 'package:college/model/history_model.dart';
-import 'package:college/presentation/booking_confirmation.dart/booking_confirmation_screen.dart';
+
 import 'package:college/presentation/payment_success_screen/payment_success_screen.dart';
-import 'package:college/services/notification.dart';
+
 import 'package:college/utils/color_constants/color_constant.dart';
 
-import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
-import 'package:time_range/time_range.dart';
 
 class DoctorDetailsScreen extends StatefulWidget {
   const DoctorDetailsScreen(
@@ -24,6 +23,8 @@ class DoctorDetailsScreen extends StatefulWidget {
 
 class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
   String? startedTime = '';
+  int? selectedIndex;
+  bool timeIndex = false;
 
   DateTime selectedDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
@@ -185,100 +186,165 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                       ],
                     ),
                   ),
+
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "Select your time slot",
-                    style: TextStyle(
-                        color: ColorCOnstant.myText,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          if (selectedDate.day != null) {
+                            timeIndex = true;
+                            setState(() {});
+                          }
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: ColorCOnstant.myLiteBlue,
+                          ),
+                          child: Text(
+                            "Select your time slot",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
+                  timeIndex == true
+                      ? Text(
+                          "Time slot",
+                          style: TextStyle(
+                              color: ColorCOnstant.myText,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        )
+                      : SizedBox(),
                   SizedBox(
                     height: 20,
                   ),
 
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: ColorCOnstant.myBlueColor)),
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '${selectedTime.hour}:${selectedTime.minute}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        IconButton(
-                            onPressed: () => _selectTime(context),
-                            icon: Icon(Icons.av_timer_rounded))
-                      ],
-                    ),
-                  ),
+                  timeIndex == true
+                      ? GridView.builder(
+                          itemCount: 10,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  mainAxisExtent: 60,
+                                  crossAxisCount: 3,
+                                  mainAxisSpacing: 10,
+                                  crossAxisSpacing: 10),
+                          itemBuilder: (context, index) => InkWell(
+                            onTap: () {
+                              selectedIndex = index;
+                              setState(() {});
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: selectedIndex == index
+                                    ? ColorCOnstant.myLiteBlue
+                                    : ColorCOnstant.myTextGrey,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "10:20 PM",
+                                  style:
+                                      TextStyle(color: ColorCOnstant.myWhite),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      : SizedBox(),
+
+                  // Container(
+                  //   width: double.infinity,
+                  //   decoration: BoxDecoration(
+                  //       borderRadius: BorderRadius.circular(10),
+                  //       border: Border.all(color: ColorCOnstant.myBlueColor)),
+                  //   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Text(
+                  //         '${selectedTime.hour}:${selectedTime.minute}',
+                  //         style: TextStyle(
+                  //             fontWeight: FontWeight.bold, fontSize: 18),
+                  //       ),
+                  //       IconButton(
+                  //           onPressed: () => _selectTime(context),
+                  //           icon: Icon(Icons.av_timer_rounded))
+                  //     ],
+                  //   ),
+                  // ),
                   SizedBox(height: 20),
 
                   // selct the time for booking -----------------------------------------------------------------------------
 
                   // book button to Confirming the null from the date and time-----------------------------------------------------------------------------
-                  InkWell(
-                    onTap: () {
-                      startedTime =
-                          '${selectedTime.hour}:${selectedTime.minute}';
-                      print(startedTime);
-                      // Navigator.pushReplacement(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //       builder: (context) => PaymentSuccessScreen(),
-                      //     ));
-                      bookingConfirmationSheet(
-                          ModelDB.departmentsData[widget.id]
-                              .doctors[widget.indexNum].name,
-                          ModelDB.departmentsData[widget.id]
-                              .doctors[widget.indexNum].qualification,
-                          ModelDB.departmentsData[widget.id]
-                              .doctors[widget.indexNum].designation,
-                          selectedDate.toString(),
-                          startedTime.toString(),
-                          ModelDB.departmentsData[widget.id]
-                              .doctors[widget.indexNum].consultationFee
-                              .toString());
+                  timeIndex == true
+                      ? InkWell(
+                          onTap: () {
+                            startedTime =
+                                '${selectedTime.hour}:${selectedTime.minute}';
+                            print(startedTime);
+                            // Navigator.pushReplacement(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (context) => PaymentSuccessScreen(),
+                            //     ));
+                            bookingConfirmationSheet(
+                                ModelDB.departmentsData[widget.id]
+                                    .doctors[widget.indexNum].name,
+                                ModelDB.departmentsData[widget.id]
+                                    .doctors[widget.indexNum].qualification,
+                                ModelDB.departmentsData[widget.id]
+                                    .doctors[widget.indexNum].designation,
+                                selectedDate.toString(),
+                                startedTime.toString(),
+                                ModelDB.departmentsData[widget.id]
+                                    .doctors[widget.indexNum].consultationFee
+                                    .toString());
 
-                      historyBox.put(
-                        'key ${generateRandomNumber()}',
-                        HistoryModel(
-                            name: ModelDB.departmentsData[widget.id]
-                                .doctors[widget.indexNum].name,
-                            time: startedTime.toString(),
-                            date: selectedDate.toString(),
-                            department: ModelDB.departmentsData[widget.id]
-                                .doctors[widget.indexNum].designation,
-                            fee: ModelDB.departmentsData[widget.id]
-                                .doctors[widget.indexNum].consultationFee
-                                .toString(),
-                            image: ModelDB.departmentsData[widget.id]
-                                .doctors[widget.indexNum].image),
-                      );
-                      setState(() {});
-                    },
-                    child: Container(
-                      height: 60,
-                      width: double.infinity,
-                      color: ColorCOnstant.myBlueColor,
-                      child: Center(
-                        child: Text(
-                          "BOOK NOW",
-                          style: TextStyle(
-                              color: ColorCOnstant.myWhite,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  ),
+                            historyBox.put(
+                              'key ${generateRandomNumber()}',
+                              HistoryModel(
+                                  name: ModelDB.departmentsData[widget.id]
+                                      .doctors[widget.indexNum].name,
+                                  time: startedTime.toString(),
+                                  date: selectedDate.toString(),
+                                  department: ModelDB.departmentsData[widget.id]
+                                      .doctors[widget.indexNum].designation,
+                                  fee: ModelDB.departmentsData[widget.id]
+                                      .doctors[widget.indexNum].consultationFee
+                                      .toString(),
+                                  image: ModelDB.departmentsData[widget.id]
+                                      .doctors[widget.indexNum].image),
+                            );
+                            setState(() {});
+                          },
+                          child: Container(
+                            height: 60,
+                            width: double.infinity,
+                            color: ColorCOnstant.myBlueColor,
+                            child: Center(
+                              child: Text(
+                                "BOOK NOW",
+                                style: TextStyle(
+                                    color: ColorCOnstant.myWhite,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        )
+                      : SizedBox(),
                   SizedBox(
                     height: 30,
                   ),

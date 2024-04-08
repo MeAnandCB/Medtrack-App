@@ -1,4 +1,4 @@
-import 'package:college/presentation/login_screen/login_screen.dart';
+import 'package:college/presentation/login_screen/view/login_screen.dart';
 import 'package:college/shared_preferances/shared_preferances.dart';
 import 'package:college/utils/color_constants/color_constant.dart';
 import 'package:flutter/material.dart';

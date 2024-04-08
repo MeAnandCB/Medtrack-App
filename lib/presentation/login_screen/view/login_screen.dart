@@ -1,8 +1,11 @@
 import 'package:college/presentation/bottom_nav_screen/bottom_nav_screen.dart';
+import 'package:college/presentation/login_screen/controller/login_controller.dart';
 import 'package:college/presentation/register_screen/register_screen.dart';
 import 'package:college/shared_preferances/shared_preferances.dart';
+import 'package:college/utils/app_utils.dart';
 import 'package:college/utils/color_constants/color_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,7 +17,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   SharedPreferencesClass obj = SharedPreferencesClass();
   final usercontroller = TextEditingController();
-  final PassController = TextEditingController();
+  final passController = TextEditingController();
   final userkey = GlobalKey<FormState>();
   final passKey = GlobalKey<FormState>();
   @override
@@ -132,6 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Form(
                         key: passKey,
                         child: TextFormField(
+                          controller: passController,
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide:
@@ -161,24 +165,37 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20,
                 ),
                 InkWell(
-                  onTap: () {
-                    if (userkey.currentState!.validate() &&
-                        passKey.currentState!.validate()) {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BottomNavScreen(),
-                          ));
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Login Successfull'),
-                          backgroundColor: ColorCOnstant.myBlueColor,
-                        ),
-                      );
+                  onTap: () async {
+                    if (usercontroller.text.isNotEmpty &&
+                        passController.text.isNotEmpty) {
+                      await Provider.of<LoginScreenController>(context,
+                              listen: false)
+                          .onLogin(
+                              phone: usercontroller.text.trim(),
+                              password: passController.text.trim())
+                          .then((value) async {
+                        print("login value $value");
+                        if (value) {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const BottomNavScreen(),
+                              ),
+                              (route) => false);
+                        } else {
+                          AppUtils.oneTimeSnackBar(
+                              bgColor: Colors.red,
+                              "Enter a vaild user and pass",
+                              context: context);
+                        }
+                        usercontroller.clear();
+                        passController.clear();
+                      });
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Wrong Credentials')),
-                      );
+                      AppUtils.oneTimeSnackBar(
+                          bgColor: Colors.red,
+                          "Enter valid user name or password",
+                          context: context);
                     }
                   },
                   child: Container(

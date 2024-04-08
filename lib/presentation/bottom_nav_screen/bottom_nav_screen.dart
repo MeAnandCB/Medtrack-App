@@ -6,7 +6,7 @@ import 'package:college/presentation/newsfeed_screen/newsfeed_screen.dart';
 import 'package:college/utils/color_constants/color_constant.dart';
 import 'package:flutter/material.dart';
 
-import '../doctors_screem/doctors_screen.dart';
+import '../department_screen/view/department_screen.dart';
 import '../profile_screen/profile_screen.dart';
 
 class BottomNavScreen extends StatefulWidget {
@@ -41,7 +41,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.medical_information_outlined),
-                label: "Doctor's"),
+                label: "Hospital"),
             // BottomNavigationBarItem(
             //     icon: Icon(Icons.business_outlined), label: "Clinic"),
             BottomNavigationBarItem(

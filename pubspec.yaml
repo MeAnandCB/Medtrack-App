@@ -56,6 +56,9 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   intl: ^0.18.0
+  internet_connection_checker: ^1.0.0+1
+  logger: ^2.0.2+1
+  provider: ^6.1.2
  
 
   
