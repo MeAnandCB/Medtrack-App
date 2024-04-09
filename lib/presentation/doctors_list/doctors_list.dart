@@ -49,8 +49,10 @@ class _DoctorsListScreenState extends State<DoctorsListScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                DoctorDetailsScreen(id: 11, indexNum: index),
+                            builder: (context) => DoctorDetailsScreen(
+                                id: doctorslistProvider.doctorsList[index].id
+                                    .toString(),
+                                indexNum: index),
                           ));
                     },
                     child: Container(

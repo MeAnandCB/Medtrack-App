@@ -1,9 +1,11 @@
 import 'package:college/global_widgets/confirmation_popup.dart';
+import 'package:college/presentation/profile_screen/controller/profile_controller.dart';
 
 import 'package:college/presentation/profile_screen/scaned_images.dart/scaned_images.dart';
 
 import 'package:college/utils/color_constants/color_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -14,7 +16,19 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await Provider.of<ProfileController>(context, listen: false)
+          .getProfileScreen();
+    });
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ProfileController>(context);
+    print(provider.profileDataRes);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorCOnstant.myBlueColor,
@@ -44,7 +58,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       decoration: BoxDecoration(border: Border.all()),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text("Sample NAme"),
+                        child: Text(provider.profileDataRes?.name ?? ""),
                       ),
                     ),
                   )
@@ -66,7 +80,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       decoration: BoxDecoration(border: Border.all()),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text("898455125"),
+                        child: Text(provider.profileDataRes?.phoneNumber ?? ""),
                       ),
                     ),
                   )
@@ -88,7 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       decoration: BoxDecoration(border: Border.all()),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text("sample@gmail.com"),
+                        child: Text(provider.profileDataRes?.user?.email ?? ""),
                       ),
                     ),
                   )

@@ -2,9 +2,11 @@ import 'package:college/box/box.dart';
 import 'package:college/model/history_model.dart';
 import 'package:college/model/profile_model.dart';
 import 'package:college/presentation/department_screen/controller/department_screen_controller.dart';
+import 'package:college/presentation/doctor_detail_screen/controller/doctor_details_controller.dart';
 import 'package:college/presentation/doctors_list/controller/doctors_list_controller.dart';
 import 'package:college/presentation/hospital_list_screen/controller/hospital_list_controller.dart';
 import 'package:college/presentation/login_screen/controller/login_controller.dart';
+import 'package:college/presentation/profile_screen/controller/profile_controller.dart';
 import 'package:college/presentation/register_screen/controller/register_screen_controller.dart';
 import 'package:college/presentation/splash_screen/splash_screen.dart';
 import 'package:college/shared_preferances/shared_preferances.dart';
@@ -41,6 +43,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => DoctorsListController(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => DoctorDetailsController(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ProfileController(),
         ),
       ],
       child: MaterialApp(
