@@ -13,8 +13,7 @@ class RegistrationScreenController extends ChangeNotifier {
       required String gender,
       required String user,
       required String pass}) async {
-    print(
-        "############################# $full_name $phone $email $dob $gender $user $pass");
+   
 
     sharedPreferences = await SharedPreferences.getInstance();
     isPostLoading = true;

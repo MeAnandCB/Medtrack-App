@@ -47,4 +47,34 @@ class DoctorDetailsController extends ChangeNotifier {
 
     return timeSlotData;
   }
+
+  //book data
+  bool isPostLoading = false;
+
+  Future<bool> onBookAppoinment({
+    required String date,
+    required String time,
+    required String id,
+  }) async {
+    isPostLoading = true;
+    notifyListeners();
+    try {
+      // need to update values from  user input
+      final fetchedData = await DoctorDetailsScreenServices()
+          .onPostAppoinment(body: {"day": date, "time": time}, doctorID: id);
+      if (fetchedData.error != true) {
+        isPostLoading = false;
+        notifyListeners();
+        return true;
+      } else {
+        isPostLoading = false;
+        notifyListeners();
+        return false;
+      }
+    } catch (e) {
+      isPostLoading = false;
+      notifyListeners();
+      return false;
+    }
+  }
 }

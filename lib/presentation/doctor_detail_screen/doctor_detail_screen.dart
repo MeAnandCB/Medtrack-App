@@ -1,14 +1,8 @@
 import 'dart:math';
 
 import 'package:college/app_config/app_config.dart';
-import 'package:college/box/box.dart';
-import 'package:college/database/data_base_with_model.dart';
-import 'package:college/model/history_model.dart';
+import 'package:college/presentation/bottom_nav_screen/bottom_nav_screen.dart';
 import 'package:college/presentation/doctor_detail_screen/controller/doctor_details_controller.dart';
-import 'package:college/presentation/doctors_list/controller/doctors_list_controller.dart';
-
-import 'package:college/presentation/payment_success_screen/payment_success_screen.dart';
-import 'package:college/repositiory/api/doctor_details_screen/model/time_slot_model.dart';
 
 import 'package:college/utils/color_constants/color_constant.dart';
 
@@ -34,6 +28,25 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
     });
 
     super.initState();
+  }
+
+  // book appoinment
+  void _Bookappoinment({
+    required String date,
+    required String time,
+    required String id,
+  }) async {
+    await Provider.of<DoctorDetailsController>(context, listen: false)
+        .onBookAppoinment(date: date, time: time, id: id);
+    // You can add more data to store if needed
+    Provider.of<DoctorDetailsController>(context, listen: false).isPostLoading
+        ? CircularProgressIndicator()
+        : Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BottomNavScreen(),
+            ),
+          );
   }
 
   String? startedTime = '';
@@ -407,6 +420,10 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                                     );
                                   } else {
                                     bookingConfirmationSheet(
+                                      id: doctorDetailsProvider
+                                              .doctorDetails?.id
+                                              .toString() ??
+                                          "",
                                       context: context,
                                       name: doctorDetailsProvider
                                               .doctorDetails?.name ??
@@ -464,6 +481,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
     required String date,
     required String time,
     required String fee,
+    required String id,
   }) {
     return showModalBottomSheet(
       context: context,
@@ -572,48 +590,49 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                     backgroundColor: MaterialStateProperty.all(Colors.blue),
                   ),
                   onPressed: () {
-                    Future.delayed(Duration(seconds: 3)).then((_) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PaymentSuccessScreen(),
-                        ),
-                      );
-                    });
-                    showModalBottomSheet(
-                      isScrollControlled: true,
-                      context: context,
-                      builder: (context) => SingleChildScrollView(
-                        child: Container(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              SizedBox(height: 50),
-                              Text(
-                                "Scan and Pay",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Center(
-                                child: Image.asset(
-                                  "assets/images/doctors/general_medicine/qr.png",
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                    Future.delayed(Duration(seconds: 3)).then((_) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PaymentSuccessScreen(),
-                        ),
-                      );
-                    });
+                    _Bookappoinment(date: date, time: time, id: id);
+                    // Future.delayed(Duration(seconds: 3)).then((_) {
+                    //   Navigator.pushReplacement(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => PaymentSuccessScreen(),
+                    //     ),
+                    //   );
+                    // });
+                    // showModalBottomSheet(
+                    //   isScrollControlled: true,
+                    //   context: context,
+                    //   builder: (context) => SingleChildScrollView(
+                    //     child: Container(
+                    //       child: Column(
+                    //         mainAxisSize: MainAxisSize.min,
+                    //         children: [
+                    //           SizedBox(height: 50),
+                    //           Text(
+                    //             "Scan and Pay",
+                    //             style: TextStyle(
+                    //               fontSize: 18,
+                    //               fontWeight: FontWeight.bold,
+                    //             ),
+                    //           ),
+                    //           Center(
+                    //             child: Image.asset(
+                    //               "assets/images/doctors/general_medicine/qr.png",
+                    //             ),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // );
+                    // Future.delayed(Duration(seconds: 3)).then((_) {
+                    //   Navigator.pushReplacement(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => PaymentSuccessScreen(),
+                    //     ),
+                    //   );
+                    // });
                   },
                   child: Text("Proceed", style: TextStyle(color: Colors.white)),
                 ),

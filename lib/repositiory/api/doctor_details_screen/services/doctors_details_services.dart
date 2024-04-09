@@ -1,5 +1,6 @@
 //function to get course detils
 
+import 'package:college/repositiory/api/doctor_details_screen/model/book_appinment_model.dart';
 import 'package:college/repositiory/api/doctor_details_screen/model/doctors_details_model.dart';
 import 'package:college/repositiory/api/doctor_details_screen/model/time_slot_model.dart';
 
@@ -30,6 +31,7 @@ class DoctorDetailsScreenServices {
       rethrow;
     }
   }
+  // get the time slot here
 
   Future<APIResponse> getTimeSloatScreen(
       {required String date, required String doctorID}) async {
@@ -50,6 +52,30 @@ class DoctorDetailsScreenServices {
       }
     } catch (e) {
       rethrow;
+    }
+  }
+
+  // post the appoinment
+  Future<APIResponse> onPostAppoinment(
+      {required Map<String, dynamic> body, required String doctorID}) async {
+    try {
+      final APIResponse response = await ApiHelper.postData(
+          body: body,
+          endPoint: "/book-appointment/$doctorID/",
+          header:
+              ApiHelper.getApiHeader(access: await AppUtils.getAccessKey()));
+      if (response.error) {
+        print("hello login response");
+        return response;
+      } else {
+        print("hello login response success");
+        BookAppoinmentResModel redData =
+            BookAppoinmentResModel.fromJson(response.data);
+        return APIResponse(data: redData, error: false, errorMessage: '');
+      }
+    } catch (e) {
+      return APIResponse(
+          data: 'res data', error: true, errorMessage: 'failed to fetch data');
     }
   }
 }
