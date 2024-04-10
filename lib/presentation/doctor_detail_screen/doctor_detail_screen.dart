@@ -20,6 +20,7 @@ class DoctorDetailsScreen extends StatefulWidget {
 }
 
 class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
+  bool timeIndex = false;
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -47,34 +48,6 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
               builder: (context) => BottomNavScreen(),
             ),
           );
-  }
-
-  String? startedTime = '';
-  int? selectedIndex;
-  bool timeIndex = false;
-
-  DateTime selectedDate = DateTime.now();
-  TimeOfDay selectedTime = TimeOfDay.now();
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2101),
-    );
-    if (pickedDate != null && pickedDate != selectedDate)
-      setState(() {
-        selectedDate = pickedDate;
-      });
-  }
-
-  Future<void> _selectTime(BuildContext context) async {
-    final TimeOfDay? pickedTime =
-        await showTimePicker(context: context, initialTime: selectedTime);
-    if (pickedTime != null && pickedTime != selectedTime)
-      setState(() {
-        selectedTime = pickedTime;
-      });
   }
 
   @override
@@ -175,15 +148,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                         ),
 
                         // here is the code for confirming the date -----------------------------------------------------------------------------
-                        // EasyDateTimeLine(
-                        //   activeColor: ColorCOnstant.myRoseColor,
-                        //   initialDate: DateTime.now(),
-                        //   onDateChange: (selectedDate) {
-                        //     setState(() {
-                        //       dateSeleted = selectedDate;
-                        //     });
-                        //   },
-                        // ),
+
                         Text(
                           "Select your Date",
                           style: TextStyle(
@@ -206,12 +171,13 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                ' ${selectedDate.day}-${selectedDate.month}-${selectedDate.year}',
+                                ' ${doctorDetailsProvider.selectedDate.day}-${doctorDetailsProvider.selectedDate.month}-${doctorDetailsProvider.selectedDate.year}',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 18),
                               ),
                               IconButton(
-                                  onPressed: () => _selectDate(context),
+                                  onPressed: () =>
+                                      doctorDetailsProvider.selectDate(context),
                                   icon: Icon(Icons.calendar_month_rounded))
                             ],
                           ),
@@ -225,30 +191,35 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                           children: [
                             InkWell(
                               onTap: () async {
-                                if (selectedDate.day != null) {
+                                if (doctorDetailsProvider.selectedDate.day !=
+                                    null) {
                                   timeIndex = true;
+                                  doctorDetailsProvider.selectedIndex = 25;
+                                  setState(() {});
                                   await Provider.of<DoctorDetailsController>(
                                           context,
                                           listen: false)
                                       .getTimeSlotList(
                                           date:
-                                              '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
+                                              '${doctorDetailsProvider.selectedDate.year}-${doctorDetailsProvider.selectedDate.month}-${doctorDetailsProvider.selectedDate.day}',
                                           doctorID: doctorDetailsProvider
                                                   .doctorDetails?.id
                                                   .toString() ??
                                               "");
                                 }
                               },
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 10),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: ColorCOnstant.myLiteBlue,
-                                ),
-                                child: Text(
-                                  "Select your time slot",
-                                  style: TextStyle(color: Colors.white),
+                              child: Consumer(
+                                builder: (context, value, child) => Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 15, vertical: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: ColorCOnstant.myLiteBlue,
+                                  ),
+                                  child: Text(
+                                    "Select your time slot",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             )
@@ -325,67 +296,88 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                         ),
 
                         timeIndex == true
-                            ? GridView.builder(
-                                itemCount:
-                                    doctorDetailsProvider.timeSlotData?.length,
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                        mainAxisExtent: 60,
-                                        crossAxisCount: 3,
-                                        mainAxisSpacing: 10,
-                                        crossAxisSpacing: 10),
-                                itemBuilder: (context, index) => InkWell(
-                                  onTap: () {
-                                    selectedIndex = index;
-                                    setState(() {});
-                                    print(doctorDetailsProvider
-                                        .timeSlotData?[index].isBooked);
+                            ? Consumer(
+                                builder: (context, value, child) =>
+                                    doctorDetailsProvider.istimeLoading
+                                        ? Center(
+                                            child: CircularProgressIndicator(),
+                                          )
+                                        : GridView.builder(
+                                            itemCount: doctorDetailsProvider
+                                                .timeSlotData?.length,
+                                            shrinkWrap: true,
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
+                                            gridDelegate:
+                                                SliverGridDelegateWithFixedCrossAxisCount(
+                                                    mainAxisExtent: 60,
+                                                    crossAxisCount: 3,
+                                                    mainAxisSpacing: 10,
+                                                    crossAxisSpacing: 10),
+                                            itemBuilder: (context, index) =>
+                                                InkWell(
+                                              onTap: () {
+                                                doctorDetailsProvider
+                                                    .selectedIndex = index;
+                                                setState(() {});
+                                                print(doctorDetailsProvider
+                                                    .timeSlotData?[index]
+                                                    .isBooked);
 
-                                    // Check if the slot is booked
-                                    if (doctorDetailsProvider
-                                            .timeSlotData?[index]?.isBooked ==
-                                        true) {
-                                      print("This slot is already booked!");
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          backgroundColor: Colors.red,
-                                          content: Text(
-                                              'This slot is already booked!'),
-                                        ),
-                                      );
-                                    } else {
-                                      print("Slot selected!");
-                                    }
-                                    ;
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: (doctorDetailsProvider
-                                                  .timeSlotData?[index]
-                                                  ?.isBooked ??
-                                              false)
-                                          ? Colors.red.shade300
-                                          : (selectedIndex == index
-                                              ? Colors.amber
-                                              : Colors.green),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        doctorDetailsProvider
-                                                .timeSlotData?[index]?.time ??
-                                            "",
-                                        style: TextStyle(
-                                          color: ColorCOnstant.myWhite,
-                                        ),
-                                      ),
-                                    ),
-                                    // Disable selection if the slot is booked
-                                  ),
-                                ),
+                                                // Check if the slot is booked
+                                                if (doctorDetailsProvider
+                                                        .timeSlotData?[index]
+                                                        ?.isBooked ==
+                                                    true) {
+                                                  print(
+                                                      "This slot is already booked!");
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      backgroundColor:
+                                                          Colors.red,
+                                                      content: Text(
+                                                          'This slot is already booked!'),
+                                                    ),
+                                                  );
+                                                } else {
+                                                  print("Slot selected!");
+                                                }
+                                                ;
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: (doctorDetailsProvider
+                                                              .timeSlotData?[
+                                                                  index]
+                                                              ?.isBooked ??
+                                                          false)
+                                                      ? Colors.red.shade300
+                                                      : (doctorDetailsProvider
+                                                                  .selectedIndex ==
+                                                              index
+                                                          ? Colors.amber
+                                                          : Colors.green),
+                                                ),
+                                                child: Center(
+                                                  child: Text(
+                                                    doctorDetailsProvider
+                                                            .timeSlotData?[
+                                                                index]
+                                                            ?.time ??
+                                                        "",
+                                                    style: TextStyle(
+                                                      color:
+                                                          ColorCOnstant.myWhite,
+                                                    ),
+                                                  ),
+                                                ),
+                                                // Disable selection if the slot is booked
+                                              ),
+                                            ),
+                                          ),
                               )
                             : SizedBox(),
 
@@ -397,17 +389,9 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                         timeIndex == true
                             ? InkWell(
                                 onTap: () {
-                                  // bookingConfirmationSheet(
-                                  //     context: context,
-                                  //     name: "",
-                                  //     qualif: "",
-                                  //     desi: "",
-                                  //     date: "date",
-                                  //     time: "time",
-                                  //     fee: "fee");
-
                                   if (doctorDetailsProvider
-                                          .timeSlotData?[selectedIndex!]
+                                          .timeSlotData?[doctorDetailsProvider
+                                              .selectedIndex!]
                                           ?.isBooked ==
                                       true) {
                                     print("This slot is already booked!");
@@ -435,9 +419,11 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                                               .doctorDetails?.specialization ??
                                           "",
                                       date:
-                                          '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
+                                          '${doctorDetailsProvider.selectedDate.year}-${doctorDetailsProvider.selectedDate.month}-${doctorDetailsProvider.selectedDate.day}',
                                       time: doctorDetailsProvider
-                                              .timeSlotData?[selectedIndex!]
+                                              .timeSlotData?[
+                                                  doctorDetailsProvider
+                                                      .selectedIndex!]
                                               .time ??
                                           "",
                                       fee: "200" ?? "",
@@ -591,48 +577,6 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                   ),
                   onPressed: () {
                     _Bookappoinment(date: date, time: time, id: id);
-                    // Future.delayed(Duration(seconds: 3)).then((_) {
-                    //   Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => PaymentSuccessScreen(),
-                    //     ),
-                    //   );
-                    // });
-                    // showModalBottomSheet(
-                    //   isScrollControlled: true,
-                    //   context: context,
-                    //   builder: (context) => SingleChildScrollView(
-                    //     child: Container(
-                    //       child: Column(
-                    //         mainAxisSize: MainAxisSize.min,
-                    //         children: [
-                    //           SizedBox(height: 50),
-                    //           Text(
-                    //             "Scan and Pay",
-                    //             style: TextStyle(
-                    //               fontSize: 18,
-                    //               fontWeight: FontWeight.bold,
-                    //             ),
-                    //           ),
-                    //           Center(
-                    //             child: Image.asset(
-                    //               "assets/images/doctors/general_medicine/qr.png",
-                    //             ),
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     ),
-                    //   ),
-                    // );
-                    // Future.delayed(Duration(seconds: 3)).then((_) {
-                    //   Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => PaymentSuccessScreen(),
-                    //     ),
-                    //   );
-                    // });
                   },
                   child: Text("Proceed", style: TextStyle(color: Colors.white)),
                 ),
@@ -644,12 +588,6 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
       ),
     );
   }
-
-  // String formatter(String datetime) {
-  //   String originalString = datetime;
-  //   String resultString = originalString.substring(0, 10);
-  //   return resultString.toString();
-  // }
 
   int generateRandomNumber() {
     int min = 0;

@@ -2,6 +2,7 @@ import 'package:college/presentation/booking_history_screen/view/booking_history
 import 'package:college/presentation/clinics_screen/clinics_screen.dart';
 import 'package:college/presentation/hospital_list_screen/view/hospital_list_screen.dart';
 import 'package:college/presentation/newsfeed_screen/newsfeed_screen.dart';
+import 'package:college/presentation/notification_screen/view/notification_screen.dart';
 
 import 'package:college/utils/color_constants/color_constant.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     // ClinicsScreen(),
     NewsFeed(),
     BookingHistory(),
+    NotificationScreen(),
     ProfileScreen()
   ];
   @override
@@ -42,12 +44,13 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.medical_information_outlined),
                 label: "Hospital"),
-            // BottomNavigationBarItem(
-            //     icon: Icon(Icons.business_outlined), label: "Clinic"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.newspaper_sharp), label: "News"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.history), label: "History"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.notification_important_outlined),
+                label: "Notification"),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
           ]),
     );

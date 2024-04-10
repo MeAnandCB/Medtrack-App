@@ -6,9 +6,37 @@ import 'package:flutter/material.dart';
 
 class DoctorDetailsController extends ChangeNotifier {
   bool isDoctorDetailsLoading = true;
+  bool istimeLoading = true;
 
   Details? doctorDetails;
   List<TimeSlot>? timeSlotData;
+
+//date
+  String? startedTime = '';
+  int? selectedIndex;
+
+  DateTime selectedDate = DateTime.now();
+  TimeOfDay selectedTime = TimeOfDay.now();
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2101),
+    );
+    if (pickedDate != null && pickedDate != selectedDate)
+      selectedDate = pickedDate;
+    notifyListeners();
+  }
+
+  Future<void> selectTime(BuildContext context) async {
+    final TimeOfDay? pickedTime =
+        await showTimePicker(context: context, initialTime: selectedTime);
+    if (pickedTime != null && pickedTime != selectedTime)
+      selectedTime = pickedTime;
+    notifyListeners();
+  }
+
 //get doters details screen
   Future getDoctordetailsList({required String id}) async {
     isDoctorDetailsLoading = true;
@@ -31,7 +59,7 @@ class DoctorDetailsController extends ChangeNotifier {
 // get time slot
   Future getTimeSlotList(
       {required String date, required String doctorID}) async {
-    isDoctorDetailsLoading = true;
+    istimeLoading = true;
     notifyListeners();
     final fetchedData = await DoctorDetailsScreenServices()
         .getTimeSloatScreen(date: date, doctorID: doctorID);
@@ -40,7 +68,7 @@ class DoctorDetailsController extends ChangeNotifier {
       timeSlotData = timeslotModel.timeSlotData ?? [];
     }
 
-    isDoctorDetailsLoading = false;
+    istimeLoading = false;
     notifyListeners();
 
     print(timeSlotData);

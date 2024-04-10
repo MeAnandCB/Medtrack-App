@@ -1,7 +1,9 @@
 import 'package:college/global_widgets/confirmation_popup.dart';
+import 'package:college/presentation/login_screen/view/login_screen.dart';
 import 'package:college/presentation/profile_screen/controller/profile_controller.dart';
 
 import 'package:college/presentation/profile_screen/scaned_images.dart/scaned_images.dart';
+import 'package:college/shared_preferances/shared_preferances.dart';
 
 import 'package:college/utils/color_constants/color_constant.dart';
 import 'package:flutter/material.dart';
@@ -170,7 +172,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               InkWell(
                 onTap: () {
-                  logoutConfirmPopup(context: context);
+                  logoutConfirmPopup(
+                    message: "do you want to exit",
+                    context: context,
+                    yes: () async {
+                      SharedPreferencesClass()
+                          .deleteData(clearUser: true, clearPass: true);
+                      await Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                          (route) => false);
+
+                      Navigator.pop(context);
+                    },
+                  );
                 },
                 child: Container(
                   height: 60,

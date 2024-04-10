@@ -1,10 +1,11 @@
-import 'package:college/presentation/login_screen/view/login_screen.dart';
-import 'package:college/shared_preferances/shared_preferances.dart';
 import 'package:college/utils/color_constants/color_constant.dart';
+
 import 'package:flutter/material.dart';
 
-Future<bool> logoutConfirmPopup({required BuildContext context}) async {
-  SharedPreferencesClass obj = SharedPreferencesClass();
+Future<bool> logoutConfirmPopup(
+    {required BuildContext context,
+    required VoidCallback yes,
+    required String message}) async {
   return await showDialog(
         //the return value will be from "Yes" or "No" options
         context: context,
@@ -28,7 +29,7 @@ Future<bool> logoutConfirmPopup({required BuildContext context}) async {
             ),
             content: Text(
               // this is the one that actually works
-              "do you want to exit",
+              message,
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center,
             ),
@@ -64,18 +65,7 @@ Future<bool> logoutConfirmPopup({required BuildContext context}) async {
                   ),
                   Expanded(
                     child: InkWell(
-                      onTap: () async {
-                        SharedPreferencesClass()
-                            .deleteData(clearUser: true, clearPass: true);
-                        await Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginScreen(),
-                            ),
-                            (route) => false);
-
-                        Navigator.pop(context);
-                      },
+                      onTap: yes,
                       child: Container(
                         height: 40,
                         decoration: BoxDecoration(

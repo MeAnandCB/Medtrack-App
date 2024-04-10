@@ -1,6 +1,7 @@
 import 'package:college/box/box.dart';
 import 'package:college/model/history_model.dart';
 import 'package:college/model/profile_model.dart';
+import 'package:college/presentation/booking_history_screen/controller/history_screen_controller.dart';
 import 'package:college/presentation/department_screen/controller/department_screen_controller.dart';
 import 'package:college/presentation/doctor_detail_screen/controller/doctor_details_controller.dart';
 import 'package:college/presentation/doctors_list/controller/doctors_list_controller.dart';
@@ -49,6 +50,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => ProfileController(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => BookingHistoryController(),
         ),
       ],
       child: MaterialApp(
