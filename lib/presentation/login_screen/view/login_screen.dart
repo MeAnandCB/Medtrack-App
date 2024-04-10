@@ -22,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final passKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LoginScreenController>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorCOnstant.myWhite,
@@ -91,6 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: TextFormField(
                           controller: usercontroller,
                           decoration: InputDecoration(
+                            suffixIcon: Icon(Icons.person),
                             focusedBorder: OutlineInputBorder(
                               borderSide:
                                   BorderSide(color: ColorCOnstant.myBlueColor),
@@ -135,8 +137,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       Form(
                         key: passKey,
                         child: TextFormField(
+                          obscureText: provider.viewPass == true ? false : true,
                           controller: passController,
                           decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  provider.viewPass = !provider.viewPass;
+                                  print(provider.viewPass);
+                                  setState(() {});
+                                },
+                                icon: provider.viewPass == false
+                                    ? Icon(Icons.remove_red_eye)
+                                    : Icon(Icons.visibility_off)),
                             focusedBorder: OutlineInputBorder(
                               borderSide:
                                   BorderSide(color: ColorCOnstant.myBlueColor),

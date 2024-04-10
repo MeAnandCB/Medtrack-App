@@ -64,7 +64,10 @@ class _NewsFeedState extends State<NewsFeed> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorCOnstant.myBlueColor,
-        title: Text("Health News Feed"),
+        title: Text(
+          "Health News Feed",
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: isLoading == true
           ? Center(

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:college/app_config/app_config.dart';
+import 'package:college/global_widgets/confirmation_popup.dart';
 import 'package:college/presentation/bottom_nav_screen/bottom_nav_screen.dart';
 import 'package:college/presentation/doctor_detail_screen/controller/doctor_details_controller.dart';
 
@@ -32,7 +33,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
   }
 
   // book appoinment
-  void _Bookappoinment({
+  void Bookappoinment({
     required String date,
     required String time,
     required String id,
@@ -73,7 +74,7 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                               image: NetworkImage(AppConfig.mediaUrl +
                                   (doctorDetailsProvider.doctorDetails?.image ??
                                       "")),
-                              fit: BoxFit.cover),
+                              fit: BoxFit.fitHeight),
                         ),
                       ),
                     ],
@@ -389,47 +390,60 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                         timeIndex == true
                             ? InkWell(
                                 onTap: () {
-                                  if (doctorDetailsProvider
-                                          .timeSlotData?[doctorDetailsProvider
-                                              .selectedIndex!]
-                                          ?.isBooked ==
-                                      true) {
-                                    print("This slot is already booked!");
+                                  if (doctorDetailsProvider.selectedIndex ==
+                                      25) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         backgroundColor: Colors.red,
-                                        content: Text(
-                                            'This slot is already booked! Please select another slot'),
+                                        content:
+                                            Text('Please select any time slot'),
                                       ),
                                     );
                                   } else {
-                                    bookingConfirmationSheet(
-                                      id: doctorDetailsProvider
-                                              .doctorDetails?.id
-                                              .toString() ??
-                                          "",
-                                      context: context,
-                                      name: doctorDetailsProvider
-                                              .doctorDetails?.name ??
-                                          "",
-                                      qualif: doctorDetailsProvider
-                                              .doctorDetails?.degree ??
-                                          "",
-                                      desi: doctorDetailsProvider
-                                              .doctorDetails?.specialization ??
-                                          "",
-                                      date:
-                                          '${doctorDetailsProvider.selectedDate.year}-${doctorDetailsProvider.selectedDate.month}-${doctorDetailsProvider.selectedDate.day}',
-                                      time: doctorDetailsProvider
-                                              .timeSlotData?[
-                                                  doctorDetailsProvider
-                                                      .selectedIndex!]
-                                              .time ??
-                                          "",
-                                      fee: "200" ?? "",
-                                    );
+                                    if (doctorDetailsProvider
+                                            .timeSlotData?[doctorDetailsProvider
+                                                .selectedIndex!]
+                                            ?.isBooked ==
+                                        true) {
+                                      print("This slot is already booked!");
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          backgroundColor: Colors.red,
+                                          content: Text(
+                                              'This slot is already booked! Please select another slot'),
+                                        ),
+                                      );
+                                    } else {
+                                      bookingConfirmationSheet(
+                                        id: doctorDetailsProvider
+                                                .doctorDetails?.id
+                                                .toString() ??
+                                            "",
+                                        context: context,
+                                        name: doctorDetailsProvider
+                                                .doctorDetails?.name ??
+                                            "",
+                                        qualif: doctorDetailsProvider
+                                                .doctorDetails?.degree ??
+                                            "",
+                                        desi: doctorDetailsProvider
+                                                .doctorDetails
+                                                ?.specialization ??
+                                            "",
+                                        date:
+                                            '${doctorDetailsProvider.selectedDate.year}-${doctorDetailsProvider.selectedDate.month}-${doctorDetailsProvider.selectedDate.day}',
+                                        time: doctorDetailsProvider
+                                                .timeSlotData?[
+                                                    doctorDetailsProvider
+                                                        .selectedIndex!]
+                                                .time ??
+                                            "",
+                                        fee: "200",
+                                      );
+                                    }
+                                    ;
                                   }
-                                  ;
                                 },
                                 child: Container(
                                   height: 60,
@@ -576,7 +590,13 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
                     backgroundColor: MaterialStateProperty.all(Colors.blue),
                   ),
                   onPressed: () {
-                    _Bookappoinment(date: date, time: time, id: id);
+                    logoutConfirmPopup(
+                        context: context,
+                        yes: () {
+                          Bookappoinment(date: date, time: time, id: id);
+                        },
+                        message: "Do you want to conform this appointment?",
+                        iconimage: Icons.alarm_rounded);
                   },
                   child: Text("Proceed", style: TextStyle(color: Colors.white)),
                 ),

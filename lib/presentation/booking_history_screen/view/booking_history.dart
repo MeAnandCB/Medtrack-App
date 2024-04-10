@@ -100,6 +100,8 @@ class _BookingHistoryState extends State<BookingHistory> {
                                           child: InkWell(
                                             onTap: () {
                                               logoutConfirmPopup(
+                                                  iconimage: Icons
+                                                      .delete_forever_outlined,
                                                   context: context,
                                                   yes: () async {
                                                     Navigator.pop(context);

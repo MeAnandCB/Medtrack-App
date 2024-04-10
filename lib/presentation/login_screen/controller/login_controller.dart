@@ -12,6 +12,7 @@ class LoginScreenController extends ChangeNotifier {
   late SharedPreferences sharedPreferences;
   LoginResModel? loginData;
   String? userPassword;
+  bool viewPass = false;
 
   // to Fetch the Course demo videos
 
@@ -37,7 +38,7 @@ class LoginScreenController extends ChangeNotifier {
             'access': loginData!.data!.access,
             "refreshAccess": loginData!.data!.refresh,
             "refresh": loginData!.data!.refresh,
-            "user": loginData!.data!.username
+            "user": loginData!.data!.email
           };
 
           ///setting shared pref
@@ -63,5 +64,10 @@ class LoginScreenController extends ChangeNotifier {
 
       return false;
     }
+  }
+
+ void viewpass() {
+    viewPass = !viewPass;
+    notifyListeners();
   }
 }

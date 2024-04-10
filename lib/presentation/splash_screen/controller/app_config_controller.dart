@@ -28,6 +28,4 @@ class AppConfigController with ChangeNotifier {
 
     studentCourseList = [];
   }
-
-  //fcm token
 }

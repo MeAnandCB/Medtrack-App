@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 Future<bool> logoutConfirmPopup(
     {required BuildContext context,
     required VoidCallback yes,
-    required String message}) async {
+    required String message,
+    required IconData iconimage}) async {
   return await showDialog(
         //the return value will be from "Yes" or "No" options
         context: context,
@@ -21,7 +22,7 @@ Future<bool> logoutConfirmPopup(
                 radius: 22,
                 backgroundColor: Colors.white,
                 child: Icon(
-                  Icons.logout,
+                  iconimage,
                   size: 25,
                   color: ColorCOnstant.myBlueColor,
                 ),
