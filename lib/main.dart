@@ -7,6 +7,7 @@ import 'package:college/presentation/doctor_detail_screen/controller/doctor_deta
 import 'package:college/presentation/doctors_list/controller/doctors_list_controller.dart';
 import 'package:college/presentation/hospital_list_screen/controller/hospital_list_controller.dart';
 import 'package:college/presentation/login_screen/controller/login_controller.dart';
+import 'package:college/presentation/notification_screen/controller/notification_controller.dart';
 import 'package:college/presentation/profile_screen/controller/profile_controller.dart';
 import 'package:college/presentation/register_screen/controller/register_screen_controller.dart';
 import 'package:college/presentation/splash_screen/splash_screen.dart';
@@ -53,6 +54,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => BookingHistoryController(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AlertController(),
         ),
       ],
       child: MaterialApp(

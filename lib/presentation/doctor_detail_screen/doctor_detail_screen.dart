@@ -43,12 +43,10 @@ class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
     // You can add more data to store if needed
     Provider.of<DoctorDetailsController>(context, listen: false).isPostLoading
         ? CircularProgressIndicator()
-        : Navigator.pushReplacement(
+        : Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(
-              builder: (context) => BottomNavScreen(),
-            ),
-          );
+            MaterialPageRoute(builder: (context) => BottomNavScreen()),
+            (route) => false);
   }
 
   @override

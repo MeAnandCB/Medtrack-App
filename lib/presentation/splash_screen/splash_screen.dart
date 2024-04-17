@@ -60,7 +60,8 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Container(
               height: 100,
-              child: Image.asset("assets/images/medical doc.png"),
+              width: 200,
+              child: Image.asset("assets/images/meditrack logo.png"),
             ),
             SizedBox(
               height: 15,
